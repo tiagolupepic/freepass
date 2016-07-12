@@ -1,0 +1,95 @@
+GIT
+  remote: git://github.com/jekuta/shotgun.git
+  revision: f16f883721dbb83d669a56cec604cc8c526c66ba
+  branch: set_pessimistic_versioning_on_rack
+  specs:
+    shotgun (0.9.1)
+      rack (~> 1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (5.0.0)
+      activesupport (= 5.0.0)
+    activerecord (5.0.0)
+      activemodel (= 5.0.0)
+      activesupport (= 5.0.0)
+      arel (~> 7.0)
+    activesupport (5.0.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    addressable (2.4.0)
+    arel (7.0.0)
+    coderay (1.1.1)
+    concurrent-ruby (1.0.2)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
+    database_cleaner (1.5.3)
+    diff-lcs (1.2.5)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    faker (1.6.5)
+      i18n (~> 0.5)
+    hashdiff (0.3.0)
+    i18n (0.7.0)
+    method_source (0.8.2)
+    minitest (5.9.0)
+    pg (0.18.4)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    puma (3.4.0)
+    rack (1.6.4)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    roda (2.15.0)
+      rack
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.1)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    safe_yaml (1.0.4)
+    slop (3.6.0)
+    thread_safe (0.3.5)
+    timecop (0.8.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    vcr (3.0.3)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activerecord
+  database_cleaner
+  factory_girl
+  faker
+  pg
+  pry
+  puma
+  rack-test
+  roda
+  rspec
+  shotgun!
+  timecop
+  vcr
+  webmock
+
+BUNDLED WITH
+   1.11.2

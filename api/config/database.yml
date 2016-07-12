@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  database: freepass_development
+  username: azk
+  password: azk
+  host: <%= ENV["POSTGRESQL_HOST"] %>
+  port: <%= ENV["POSTGRESQL_PORT"] %>
+
+test:
+  adapter: postgresql
+  database: freepass_test
+  username: azk
+  password: azk
+  host: <%= ENV["POSTGRESQL_HOST"] %>
+  port: <%= ENV["POSTGRESQL_PORT"] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
