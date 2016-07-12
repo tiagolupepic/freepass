@@ -9,5 +9,9 @@ class Api < Roda
     r.on 'users' do
       r.run Users
     end
+
+    r.on 'holidays' do
+      r.run Holidays
+    end
   end
 end
