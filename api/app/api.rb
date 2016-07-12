@@ -5,5 +5,9 @@ class Api < Roda
     r.root do
       { name: 'Freepass' }
     end
+
+    r.on 'users' do
+      r.run Users
+    end
   end
 end
