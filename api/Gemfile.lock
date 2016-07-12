@@ -45,6 +45,7 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rake (11.2.2)
     roda (2.15.0)
       rack
     rspec (3.5.0)
@@ -84,6 +85,7 @@ DEPENDENCIES
   pry
   puma
   rack-test
+  rake
   roda
   rspec
   shotgun!
