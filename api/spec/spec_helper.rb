@@ -9,10 +9,8 @@ require 'faker'
 require 'timecop'
 require 'vcr'
 
-factories_path = '/spec/factories'
-
 FactoryGirl.factories.clear
-FactoryGirl.definition_file_paths = [factories_path]
+FactoryGirl.definition_file_paths = ['spec/factories']
 FactoryGirl.find_definitions
 
 Dir[File.join(__dir__, "support/**/*.rb")].each { |f| require f }
