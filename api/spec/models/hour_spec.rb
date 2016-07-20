@@ -4,6 +4,7 @@ RSpec.describe Hour, type: :model do
   it { should validate_presence_of :name }
   it { should validate_presence_of :start_at }
   it { should validate_presence_of :end_at }
+  it { should validate_presence_of :days }
 
   context '.days' do
     it { should respond_to :sunday }
