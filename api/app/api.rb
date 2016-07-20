@@ -13,5 +13,9 @@ class Api < Roda
     r.on 'holidays' do
       r.run Holidays
     end
+
+    r.on 'hours' do
+      r.run Hours
+    end
   end
 end
