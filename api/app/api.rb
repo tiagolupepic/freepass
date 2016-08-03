@@ -17,5 +17,9 @@ class Api < Roda
     r.on 'hours' do
       r.run Hours
     end
+
+    r.on 'cards' do
+      r.run Cards
+    end
   end
 end
