@@ -1,3 +1,5 @@
 class Card < ActiveRecord::Base
-  validates :user_id, :number, presence: true
+  belongs_to :user
+
+  validates :user, :number, presence: true
 end
