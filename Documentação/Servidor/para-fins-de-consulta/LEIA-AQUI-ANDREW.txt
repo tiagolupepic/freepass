@@ -1,0 +1,3 @@
+Os arquivos deste diretório foram usados no projeto de IAC, não referem ao projeto atual, porém a idéia é a mesma.
+Você pode dar uma olhada nos diagramas mas não se baseie totalmente neles, pois podem conter erros, até o prof. neves encontrou alguns…. imagina….
+O banco também pode sofrer algumas mudanças, dependendo de como o Tiago implementar as models..
