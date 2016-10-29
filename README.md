@@ -219,7 +219,7 @@ Response (with empty objects):
 
 ####2. POST /hours
 
-This endpoint will receive `holiday` params
+This endpoint will receive `hour` params
 
 Available attributes
 
