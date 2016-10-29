@@ -131,6 +131,64 @@ curl -H "Content-type: application/json"  http://<project url>/cards/:id
 curl -H "Content-type: application/json" -X DELETE http://<project url>/cards/:id
 ```
 
+### 3. Holidays
+
+1. GET to list holidays
+2. GET specify holiday
+3. POST to create holiday
+4. PUT to update holiday
+5. DELETE to delete holiday
+
+####1. GET /holidays
+
+You can use cURL to get
+
+```
+curl http://<project url>/holidays
+```
+
+Response (with empty objects):
+
+```json
+[{
+   "name":
+   "happen_at":
+}]
+```
+
+####2. POST /holidays
+
+This endpoint will receive `holiday` params
+
+Available attributes
+
+```
+name (required)
+happend_at (required) - format (yyyy-mm-dd)
+```
+
+```
+curl -H "Content-type: application/json" -X POST -d '{"name":"Holiday"}....' http://<project url>/holidays
+```
+
+####3. PUT /holidays/:id
+
+```
+curl -H "Content-type: application/json" -X PUT -d '{"name":"holiday"}....' http://<project url>/holidays/:id
+```
+
+####4. GET /:id
+
+```
+curl -H "Content-type: application/json"  http://<project url>/holidays/:id
+```
+
+####5. DELETE /:id
+
+```
+curl -H "Content-type: application/json" -X DELETE http://<project url>/holidays/:id
+```
+
 ## Run Tests
 
 First, create a test database:
