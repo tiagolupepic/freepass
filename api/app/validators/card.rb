@@ -1,0 +1,2 @@
+class CardValidator
+end

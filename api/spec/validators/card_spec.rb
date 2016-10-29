@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe CardService do
+describe CardValidator do
 end
