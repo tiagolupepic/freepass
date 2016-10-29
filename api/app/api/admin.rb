@@ -6,7 +6,7 @@ class Admins < Roda
     r.post do
       r.is 'auth' do
         response.status = 403 if params[:password].blank?
-        { success: params[:passowrd].present? }
+        { success: params[:password].present? }
       end
     end
   end
