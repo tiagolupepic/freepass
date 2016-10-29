@@ -320,6 +320,24 @@ curl -H "Content-type: application/json"  http://<project url>/periods/:id
 curl -H "Content-type: application/json" -X DELETE http://<project url>/periods/:id
 ```
 
+### 6. Admins
+
+1. POST to auth admin
+
+####1. POST /admins/auth
+
+This endpoint will auth admin and return object of user
+
+Available attributes
+
+```
+password (required)
+```
+
+```
+curl -H "Content-type: application/json" -X POST -d '{"password":"pass"}....' http://<project url>/admin/auth
+```
+
 ## Run Tests
 
 First, create a test database:
