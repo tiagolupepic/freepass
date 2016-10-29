@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'roda'
-gem 'puma'
-gem 'pg'
-gem 'activerecord'
-gem 'rake'
+gem 'roda', '2.19'
+gem 'puma', '3.6'
+gem 'pg', '0.19.0'
+gem 'activerecord', '5.0.0'
+gem 'rake', '11.3.0'
 gem 'will_paginate', '~> 3.1.0'
 
 group :development do
