@@ -27,7 +27,7 @@ class Cards < Roda
 
     r.get do
       r.is do
-        Card.all
+        paginate Card.paginate(page: params[:page])
       end
     end
   end
