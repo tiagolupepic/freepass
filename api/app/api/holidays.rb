@@ -27,7 +27,7 @@ class Holidays < Roda
 
     r.get do
       r.is do
-        Holiday.all
+        paginate Holiday.paginate(page: params[:page])
       end
     end
   end
