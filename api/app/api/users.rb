@@ -24,5 +24,11 @@ class Users < Roda
         user.destroy
       end
     end
+
+    r.get do
+      r.is do
+        User.all
+      end
+    end
   end
 end

@@ -6,6 +6,22 @@ RSpec.describe Users do
   let(:token)  { nil }
   let(:params) { { full_name: 'Freepass user', password: '123456', email: 'user@freepass' } }
 
+  describe 'GET /' do
+    it 'should respond route' do
+      get '/users', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    context 'with users' do
+      before { create :user }
+
+      it 'should respond all users' do
+       get '/users', {}, request_headers
+       expect(json_response.size).to eq 1
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should create user' do
       post '/users', {}, request_headers
