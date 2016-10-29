@@ -7,6 +7,22 @@ RSpec.describe Cards do
   let(:params) { { number: '123456', user_id: user.id } }
   let(:user)   { create :user }
 
+  describe 'GET /' do
+    it 'should respond route' do
+      get '/cards', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    context 'with cards' do
+      before { create :card }
+
+      it 'should respond all cards' do
+       get '/cards', {}, request_headers
+       expect(json_response.size).to eq 1
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should create card' do
       post '/cards', {}, request_headers

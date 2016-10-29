@@ -24,5 +24,11 @@ class Cards < Roda
         card.destroy
       end
     end
+
+    r.get do
+      r.is do
+        Card.all
+      end
+    end
   end
 end
