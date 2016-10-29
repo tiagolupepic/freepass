@@ -24,5 +24,11 @@ class Holidays < Roda
         holiday.destroy
       end
     end
+
+    r.get do
+      r.is do
+        Holiday.all
+      end
+    end
   end
 end

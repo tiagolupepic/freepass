@@ -6,6 +6,22 @@ RSpec.describe Holidays do
   let(:token)  { nil }
   let(:params) { { name: 'Independency day', happen_at: Date.parse('2016-07-04') } }
 
+  describe 'GET /' do
+    it 'should respond route' do
+      get '/holidays', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    context 'with holidays' do
+      before { create :holiday }
+
+      it 'should respond all holidays' do
+       get '/holidays', {}, request_headers
+       expect(json_response.size).to eq 1
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should create holiday' do
       post '/holidays', {}, request_headers
