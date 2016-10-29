@@ -27,7 +27,7 @@ class Users < Roda
 
     r.get do
       r.is do
-        User.all
+        paginate User.paginate(page: params[:page])
       end
     end
   end
