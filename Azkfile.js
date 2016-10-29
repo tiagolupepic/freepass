@@ -12,7 +12,7 @@ systems({
       "bundle install --path /azk/bundler"
     ],
     workdir: "/azk/#{manifest.dir}/#{system.name}",
-    command: "bundle exec shotgun -s puma --port 5000 --host 0.0.0.0 config.ru",
+    command: "bundle exec notgun -s puma --port 5000 --host 0.0.0.0 config.ru",
     mounts: {
       '/azk/#{manifest.dir}/#{system.name}': path("./#{system.name}"),
       '/azk/bundler': persistent("./#{system.name}/bundler")
