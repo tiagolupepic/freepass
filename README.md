@@ -78,6 +78,7 @@ curl -H "Content-type: application/json" -X DELETE http://<project url>/users/:i
 3. POST to create card
 4. PUT to update card
 5. DELETE to delete card
+6. POST to auth
 
 ####1. GET /cards
 
@@ -129,6 +130,20 @@ curl -H "Content-type: application/json"  http://<project url>/cards/:id
 
 ```
 curl -H "Content-type: application/json" -X DELETE http://<project url>/cards/:id
+```
+
+####1. POST /cards/auth
+
+This endpoint will auth admin and return object of user
+
+Available attributes
+
+```
+number (required)
+```
+
+```
+curl -H "Content-type: application/json" -X POST -d '{"number":"num"}....' http://<project url>/cards/auth
 ```
 
 ### 3. Holidays
