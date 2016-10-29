@@ -6,4 +6,6 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:full_name).on(:create) }
   it { should validate_presence_of(:email).on(:create) }
   it { should validate_presence_of(:password).on(:create) }
+
+  it { should have_many :cards }
 end
