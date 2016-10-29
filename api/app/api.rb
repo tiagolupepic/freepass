@@ -1,6 +1,12 @@
 class Api < Roda
   include RequestHelper
 
+  use Rack::Cors do
+    allow do
+      origins '*'
+    end
+  end
+
   route do |r|
     r.root do
       { name: 'Freepass' }
