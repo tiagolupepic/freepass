@@ -25,5 +25,9 @@ class Api < Roda
     r.on 'periods' do
       r.run Periods
     end
+
+    r.on 'admins' do
+      r.run Admins
+    end
   end
 end
