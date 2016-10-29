@@ -27,7 +27,7 @@ class Periods < Roda
 
     r.get do
       r.is do
-        Period.all
+        paginate Period.paginate(page: params[:page])
       end
     end
   end
