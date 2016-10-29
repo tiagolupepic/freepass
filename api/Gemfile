@@ -6,6 +6,7 @@ gem 'puma'
 gem 'pg'
 gem 'activerecord'
 gem 'rake'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development do
   gem 'rack-test'
