@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
 
 gem 'roda'
 gem 'puma'
@@ -10,7 +10,7 @@ gem 'rake'
 group :development do
   gem 'rack-test'
   gem 'rspec'
-  gem 'shotgun', github: 'jekuta/shotgun', branch: 'set_pessimistic_versioning_on_rack'
+  gem 'notgun', '0.9.2'
   gem 'factory_girl'
   gem 'database_cleaner'
   gem 'faker'
