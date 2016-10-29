@@ -255,6 +255,71 @@ curl -H "Content-type: application/json"  http://<project url>/hours/:id
 curl -H "Content-type: application/json" -X DELETE http://<project url>/hours/:id
 ```
 
+
+### 5. Periods
+
+1. GET to list periods
+2. GET specify period
+3. POST to create period
+4. PUT to update period
+5. DELETE to delete period
+
+####1. GET /periods
+
+You can use cURL to get
+
+```
+curl http://<project url>/periods
+```
+
+Response (with empty objects):
+
+```json
+[{
+   "name":
+   "start_at":
+   "end_at":
+   "hours":[
+    "name"
+   ]
+}]
+```
+
+####2. POST /periods
+
+This endpoint will receive `period` params
+
+Available attributes
+
+```
+name (required)
+start_at (required) - format (hh:mm:ss)
+end_at (required) - format (hh:mm:ss)
+hour_ids: []
+```
+
+```
+curl -H "Content-type: application/json" -X POST -d '{"name":"Period"}....' http://<project url>/periods
+```
+
+####3. PUT /hours/:id
+
+```
+curl -H "Content-type: application/json" -X PUT -d '{"name":"Period"}....' http://<project url>/periods/:id
+```
+
+####4. GET /:id
+
+```
+curl -H "Content-type: application/json"  http://<project url>/periods/:id
+```
+
+####5. DELETE /:id
+
+```
+curl -H "Content-type: application/json" -X DELETE http://<project url>/periods/:id
+```
+
 ## Run Tests
 
 First, create a test database:
