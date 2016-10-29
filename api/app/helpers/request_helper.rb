@@ -20,7 +20,7 @@ module RequestHelper
   def paginate(object)
     response.headers["X-Total-Pages"] = object.total_pages.to_s
     response.headers["X-Total-Count"] = object.total_entries.to_s
-    response.headers["X-Per-Page"]    = "10"
+    response.headers["X-Per-Page"]    = WillPaginate.per_page
     object
   end
 end
