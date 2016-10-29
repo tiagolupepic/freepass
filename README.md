@@ -71,7 +71,7 @@ curl -H "Content-type: application/json"  http://<project url>/users/:id
 curl -H "Content-type: application/json" -X DELETE http://<project url>/users/:id
 ```
 
-### 1. Cards
+### 2. Cards
 
 1. GET to list cards
 2. GET specify card
@@ -187,6 +187,72 @@ curl -H "Content-type: application/json"  http://<project url>/holidays/:id
 
 ```
 curl -H "Content-type: application/json" -X DELETE http://<project url>/holidays/:id
+```
+
+### 4. Hours
+
+1. GET to list hours
+2. GET specify hour
+3. POST to create hour
+4. PUT to update hour
+5. DELETE to delete hour
+
+####1. GET /hours
+
+You can use cURL to get
+
+```
+curl http://<project url>/hours
+```
+
+Response (with empty objects):
+
+```json
+[{
+   "name":
+   "start_at":
+   "end_at":
+   "sunday":
+   "monday":
+}]
+```
+
+####2. POST /hours
+
+This endpoint will receive `holiday` params
+
+Available attributes
+
+```
+name (required)
+start_at (required) - format (hh:mm:ss)
+end_at (required) - format (hh:mm:ss)
+days: [
+  monday: true,
+  saturday: true
+]
+```
+
+```
+curl -H "Content-type: application/json" -X POST -d '{"name":"Hour"}....' http://<project url>/hours
+```
+
+####3. PUT /hours/:id
+
+```
+curl -H "Content-type: application/json" -X PUT -d '{"name":"Hour"}....' http://<project url>/hours/:id
+```
+
+####4. GET /:id
+
+```
+curl -H "Content-type: application/json"  http://<project url>/hours/:id
+```
+
+####5. DELETE /:id
+
+```
+curl -H "Content-type: application/json" -X DELETE http://<project url>/hours/:id
 ```
 
 ## Run Tests
