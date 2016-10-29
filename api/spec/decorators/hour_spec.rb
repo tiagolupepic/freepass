@@ -12,8 +12,8 @@ RSpec.describe HourDecorator do
     it 'should parse json' do
       expect(result[:id]).to       eq model.id
       expect(result[:name]).to     eq model.name
-      expect(result[:start_at]).to eq model.start_at.utc.to_s(:iso8601)
-      expect(result[:end_at]).to   eq model.end_at.utc.to_s(:iso8601)
+      expect(result[:start_at]).to eq model.start_at.strftime('%H:%M')
+      expect(result[:end_at]).to   eq model.end_at.strftime('%H:%M')
       expect(result[:days]).to     eq ['monday']
     end
   end

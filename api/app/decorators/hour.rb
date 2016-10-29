@@ -14,8 +14,8 @@ class HourDecorator
     {
       id:       id,
       name:     name,
-      start_at: format_datetime(start_at),
-      end_at:   format_datetime(end_at),
+      start_at: format_time(start_at),
+      end_at:   format_time(end_at),
       days:     days
     }
   end
