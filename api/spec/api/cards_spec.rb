@@ -92,4 +92,14 @@ RSpec.describe Cards do
       expect(Card.count).to eq 0
     end
   end
+
+  describe 'POST /cards/auth' do
+    let(:params) { { number: '123456' } }
+
+    it 'should auth card' do
+      post '/cards/auth', {}, request_headers
+      expect(response.status).to eq 200
+      # fail! 403
+    end
+  end
 end

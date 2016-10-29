@@ -4,6 +4,10 @@ class Cards < Roda
 
   route do |r|
     r.post do
+      r.is 'auth' do
+        { success: true }
+      end
+
       r.is do
         errors_or_object Card.create(params)
       end
