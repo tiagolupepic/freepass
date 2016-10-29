@@ -27,7 +27,7 @@ class Hours < Roda
 
     r.get do
       r.is do
-        Hour.all
+        paginate Hour.paginate(page: params[:page])
       end
     end
   end

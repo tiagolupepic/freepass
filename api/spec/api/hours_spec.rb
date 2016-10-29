@@ -19,6 +19,28 @@ RSpec.describe Hours do
        get '/hours', {}, request_headers
        expect(json_response.size).to eq 1
       end
+
+      it 'should respond with paging headers' do
+        get '/hours', {}, request_headers
+
+        expect(response.headers['X-Total-Pages']).to eq '1'
+        expect(response.headers['X-Total-Count']).to eq '1'
+        expect(response.headers['X-Per-Page']).to    eq '10'
+      end
+
+      context 'paginate' do
+        let(:params) { { page: 2 } }
+
+        it 'should respond with status 200' do
+          get '/hours', {}, request_headers
+          expect(response.status).to eq 200
+        end
+
+        it 'should return empty hours' do
+          get '/hours', {}, request_headers
+          expect(json_response.size).to eq 0
+        end
+      end
     end
   end
 
