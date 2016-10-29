@@ -24,5 +24,11 @@ class Hours < Roda
         hour.destroy
       end
     end
+
+    r.get do
+      r.is do
+        Hour.all
+      end
+    end
   end
 end

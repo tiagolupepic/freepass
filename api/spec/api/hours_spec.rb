@@ -6,6 +6,22 @@ RSpec.describe Hours do
   let(:token)  { nil }
   let(:params) { { name: 'Interval', start_at: Time.now.utc.to_s(:iso8601), end_at: Time.now.utc.to_s(:iso8601), days: { monday: true } } }
 
+  describe 'GET /' do
+    it 'should respond route' do
+      get '/hours', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    context 'with hours' do
+      before { create :hour }
+
+      it 'should respond all hours' do
+       get '/hours', {}, request_headers
+       expect(json_response.size).to eq 1
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should create hour' do
       post '/hours', {}, request_headers
