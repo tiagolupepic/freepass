@@ -21,5 +21,9 @@ class Api < Roda
     r.on 'cards' do
       r.run Cards
     end
+
+    r.on 'periods' do
+      r.run Periods
+    end
   end
 end
