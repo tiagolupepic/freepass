@@ -132,7 +132,7 @@ curl -H "Content-type: application/json"  http://<project url>/cards/:id
 curl -H "Content-type: application/json" -X DELETE http://<project url>/cards/:id
 ```
 
-####1. POST /cards/auth
+####6. POST /cards/auth
 
 This endpoint will auth admin and return object of user
 
