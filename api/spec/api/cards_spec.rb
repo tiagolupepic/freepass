@@ -98,8 +98,18 @@ RSpec.describe Cards do
 
     it 'should auth card' do
       post '/cards/auth', {}, request_headers
-      expect(response.status).to eq 200
-      # fail! 403
+      expect(response.status).to     eq 200
+      expect(json_response['success']).to be_truthy
+    end
+
+    context 'without number' do
+      let(:params) { { number: nil } }
+
+      it 'should auth card' do
+        post '/cards/auth', {}, request_headers
+        expect(response.status).to     eq 403
+        expect(json_response['success']).to be_falsey
+      end
     end
   end
 end

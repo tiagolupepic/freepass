@@ -5,7 +5,8 @@ class Cards < Roda
   route do |r|
     r.post do
       r.is 'auth' do
-        { success: true }
+        response.status = 403 if params[:number].blank?
+        { success: params[:number].present? }
       end
 
       r.is do
