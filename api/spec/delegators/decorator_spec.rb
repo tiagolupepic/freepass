@@ -21,5 +21,25 @@ RSpec.describe DecoratorDelegator do
         expect(result).to eq ['Freepass']
       end
     end
+
+    context 'with User model' do
+      let(:model) { create :user }
+
+      it 'should decorate with decorator' do
+        expect(result.class).to eq UserDecorator
+      end
+    end
+
+    context 'with array of User model' do
+      let(:model) { User.all }
+
+      before do
+        create :user
+      end
+
+      it 'should decorate with decorator' do
+        expect(result.first.class).to eq UserDecorator
+      end
+    end
   end
 end
