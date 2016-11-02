@@ -6,4 +6,5 @@ RSpec.describe Period, type: :model do
   it { should validate_presence_of :end_at }
 
   it { should have_and_belong_to_many :hours }
+  it { should have_and_belong_to_many :users }
 end
