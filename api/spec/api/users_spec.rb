@@ -4,7 +4,7 @@ RSpec.describe Users do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }
-  let(:params) { { full_name: 'Freepass user', password: '123456', email: 'user@freepass' } }
+  let(:params) { { full_name: 'Freepass user', password: '123456', email: 'user@freepass', cpf: CPF.generate } }
 
   describe 'GET /' do
     it 'should respond route' do
