@@ -21,7 +21,7 @@ systems({
     http: { domains: ["#{system.name}.#{azk.default_domain}"] },
     envs: {
       RACK_ENV: "development",
-      MOUSTACHE_URL: "http://#{system.name}.#{azk.default_domain}"
+      API_URL: "http://#{system.name}.#{azk.default_domain}"
     },
     wait: 15
   },
