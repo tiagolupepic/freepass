@@ -25,6 +25,26 @@ systems({
     },
     wait: 15
   },
+  admin: {
+    extends: 'base',
+    depends: ['api'],
+    provision: [
+      "bundle install --path /azk/bundler"
+    ],
+    workdir: "/azk/#{manifest.dir}/#{system.name}",
+    command: "bundle exec notgun -s puma --port 5000 --host 0.0.0.0 config.ru",
+    mounts: {
+      '/azk/#{manifest.dir}/#{system.name}': path("./#{system.name}"),
+      '/azk/bundler': persistent("./#{system.name}/bundler")
+    },
+    scalable: { default: 1 },
+    http: { domains: ["#{system.name}.#{azk.default_domain}"] },
+    envs: {
+      RACK_ENV: "development",
+      ADMIN_URL: "http://#{system.name}.#{azk.default_domain}"
+    },
+    wait: 15
+  },
   postgres: {
     depends: [],
     image: {"docker": "azukiapp/postgres:9.5"},
