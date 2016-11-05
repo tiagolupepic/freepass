@@ -14,6 +14,7 @@ RSpec.describe CardDecorator do
       expect(result[:number]).to    eq model.number
       expect(result[:full_name]).to eq model.user.full_name
       expect(result[:email]).to     eq model.user.email
+      expect(result[:user_id]).to   eq model.user_id
     end
   end
 end

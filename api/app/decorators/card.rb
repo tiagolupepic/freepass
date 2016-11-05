@@ -1,7 +1,7 @@
 class CardDecorator
   extend Forwardable
 
-  def_delegators :@model, :id, :number
+  def_delegators :@model, :id, :number, :user_id
 
   attr_reader :model
 
@@ -14,7 +14,8 @@ class CardDecorator
       id:        id,
       number:    number,
       full_name: user.full_name,
-      email:     user.email
+      email:     user.email,
+      user_id:   user_id,
     }
   end
 
