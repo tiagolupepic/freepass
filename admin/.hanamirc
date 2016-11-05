@@ -1,0 +1,4 @@
+project=admin
+architecture=container
+test=rspec
+template=erb
