@@ -21,4 +21,5 @@ group :development do
   gem 'vcr'
   gem 'webmock'
   gem 'shoulda-matchers'
+  gem 'rails-erd'
 end
