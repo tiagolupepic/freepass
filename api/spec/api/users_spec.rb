@@ -25,7 +25,7 @@ RSpec.describe Users do
 
         expect(response.headers['X-Total-Pages']).to eq '1'
         expect(response.headers['X-Total-Count']).to eq '1'
-        expect(response.headers['X-Per-Page']).to    eq 5
+        expect(response.headers['X-Per-Page']).to    eq '5'
       end
 
       context 'paginate' do
