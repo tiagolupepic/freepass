@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Freepass</title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Custom Theme Style -->
+  <link href="../css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-id-card"></i> <span>Freepass</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile">
+            <div class="profile_pic">
+              <img src="../images/img.jpg" class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Bem-Vindo,</span>
+              <h2>Administrador</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+          <br />
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>Menu</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-user"></i> Usuários <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="users/add.html">Adicionar</a></li>
+                    <li><a href="users/index.html">Listar</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-clock-o"></i> Horários <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="hours/add.html">Adicionar</a></li>
+                    <li><a href="hours/index.html">Listar</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-calendar"></i> Periodos <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="periods/add.html">Adicionar</a></li>
+                    <li><a href="periods/index.html">Listar</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-flag"></i> Feriados <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="holidays/add.html">Adicionar</a></li>
+                    <li><a href="holidays/index.html">Listar</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-id-card"></i> Cartões / RFID <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="cards/add.html">Adicionar</a></li>
+                    <li><a href="cards/index.html">Listar</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-list-ul"></i>Eventos <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="events/index.html">Listar</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /sidebar menu -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="../images/img.jpg" alt="">Administrador
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+                  <li>
+                    <a href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li><a href="javascript:;">Help</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+      <!-- page content -->
+      <div class='right_col' role='main'>
+
+        <div class="page-title">
+          <div class="title_left">
+            <h3>Horários</h3>
+          </div>
+
+          <div class="title_right">
+            <div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right top_search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Filtrar por...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Buscar</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>Listar</h2>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="x_content">
+
+
+                <div class="table-responsive">
+                  <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                      <tr class="headings">
+                        <th class="column-title" style="display: table-cell;">Nome </th>
+                        <th class="column-title" style="display: table-cell;">Início </th>
+                        <th class="column-title" style="display: table-cell;">Fim </th>
+                        <th class="column-title" style="display: table-cell;">Dias da Semana</th>
+                        <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Ações</span></th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr class="even pointer">
+                        <td class=" ">Comercial</td>
+                        <td class=" ">08:00</td>
+                        <td class=" ">18:00</td>
+                        <td class=" ">Seg,Ter,Qua,Qui,Sex</td>
+                        <td class=" last">
+                          <a href="../hours/show.html" class='btn btn-xs btn-default'>Visualizar</a>
+                          <a href="#" class='btn btn-xs btn-info'>Editar</a>
+                          <a href="#" class='btn btn-xs btn-danger'>Excluir</a>
+                        </td>
+                      </tr>
+                      <tr class="even pointer">
+                        <td class=" ">Comercial</td>
+                        <td class=" ">08:00</td>
+                        <td class=" ">18:00</td>
+                        <td class=" ">Seg,Ter,Qua,Qui,Sex</td>
+                        <td class=" last">
+                          <a href="../hours/show.html" class='btn btn-xs btn-default'>Visualizar</a>
+                          <a href="#" class='btn btn-xs btn-info'>Editar</a>
+                          <a href="#" class='btn btn-xs btn-danger'>Excluir</a>
+                        </td>
+                      </tr>
+                      <tr class="even pointer">
+                        <td class=" ">Comercial</td>
+                        <td class=" ">08:00</td>
+                        <td class=" ">18:00</td>
+                        <td class=" ">Seg,Ter,Qua,Qui,Sex</td>
+                        <td class=" last">
+                          <a href="../hours/show.html" class='btn btn-xs btn-default'>Visualizar</a>
+                          <a href="#" class='btn btn-xs btn-info'>Editar</a>
+                          <a href="#" class='btn btn-xs btn-danger'>Excluir</a>
+                        </td>
+                      </tr>
+                      <tr class="even pointer">
+                        <td class=" ">Comercial</td>
+                        <td class=" ">08:00</td>
+                        <td class=" ">18:00</td>
+                        <td class=" ">Seg,Ter,Qua,Qui,Sex</td>
+                        <td class=" last">
+                          <a href="../hours/show.html" class='btn btn-xs btn-default'>Visualizar</a>
+                          <a href="#" class='btn btn-xs btn-info'>Editar</a>
+                          <a href="#" class='btn btn-xs btn-danger'>Excluir</a>
+                        </td>
+                      </tr>
+                      <tr class="even pointer">
+                        <td class=" ">Comercial</td>
+                        <td class=" ">08:00</td>
+                        <td class=" ">18:00</td>
+                        <td class=" ">Seg,Ter,Qua,Qui,Sex</td>
+                        <td class=" last">
+                          <a href="../hours/show.html" class='btn btn-xs btn-default'>Visualizar</a>
+                          <a href="#" class='btn btn-xs btn-info'>Editar</a>
+                          <a href="#" class='btn btn-xs btn-danger'>Excluir</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <ul class="pagination pagination-split">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+            </ul>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+      <!-- /page content -->
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Freepass - Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/jquery.min.js"></script>
+  <!-- iCheck -->
+  <script src="../vendors/iCheck/iCheck.min.js"></script>
+  <!-- Boostrap ProgressBar -->
+  <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+  <!-- DateJS -->
+  <script src="../vendors/DateJS/date.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="../js/custom.js"></script>
+</body>
+</html>
