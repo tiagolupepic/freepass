@@ -6,6 +6,7 @@ gem 'hanami', '~> 0.8'
 gem 'spyke'
 gem 'puma'
 gem 'request_store'
+gem 'multi_json'
 
 group :development do
   # Code reloading
