@@ -50,6 +50,25 @@ RSpec.describe Users do
       expect(response.status).to eq 200
       expect(User.count).to      eq 1
     end
+
+    context 'with invalid params' do
+      let(:params) { { full_name: nil } }
+
+      it 'should return error' do
+        post '/users', {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should not create user' do
+        post '/users', {}, request_headers
+        expect(User.count).to eq 0
+      end
+
+      it 'should return errors' do
+        post '/users', {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
+    end
   end
 
   describe 'GET /:id' do
@@ -74,6 +93,20 @@ RSpec.describe Users do
     it 'should update user attribute' do
       put '/users/' + user.id, {}, request_headers
       expect(user.reload.full_name).to eq 'Another name'
+    end
+
+    context 'with errors' do
+      let(:params) { { full_name: nil } }
+
+      it 'should return error' do
+        put '/users/' + user.id, {}, request_headers
+        expect(response.status).to     eq 422
+      end
+
+      it 'should return error details' do
+        put '/users/' + user.id, {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 

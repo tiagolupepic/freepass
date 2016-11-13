@@ -5,7 +5,9 @@ class Users < Roda
   route do |r|
     r.post do
       r.is do
-        errors_or_object User.create(params)
+        user = User.create(params)
+        response.status = 422 unless user.valid?
+        user
       end
     end
 
@@ -17,7 +19,9 @@ class Users < Roda
       end
 
       r.put do
-        user.update_attributes(params) ? user : halt_request(422, { error: user.errors.full_messages })
+        user.update_attributes(params)
+        response.status = 422 unless user.valid?
+        user
       end
 
       r.delete do
