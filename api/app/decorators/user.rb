@@ -17,7 +17,15 @@ class UserDecorator
       address:   address,
       email:     email,
       cpf:       cpf,
-      admin:     false
+      admin:     false,
+      errors:    errors
     }
+  end
+
+  private
+
+  def errors
+    return if model.valid?
+    model.errors.details
   end
 end
