@@ -1,0 +1,10 @@
+<% unless model.errors.empty? %>
+<div class="alert alert-danger">
+  <p><strong>Por favor, verifique os seguintes campos:</strong></p>
+  <ul>
+  <% model.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
