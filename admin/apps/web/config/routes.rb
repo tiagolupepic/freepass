@@ -3,3 +3,5 @@
 #
 # Example:
 get '/', to: 'home#index'
+
+resources :users
