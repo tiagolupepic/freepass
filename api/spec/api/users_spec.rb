@@ -47,7 +47,7 @@ RSpec.describe Users do
   describe 'POST create' do
     it 'should create user' do
       post '/users', {}, request_headers
-      expect(response.status).to eq 200
+      expect(response.status).to eq 201
       expect(User.count).to      eq 1
     end
 

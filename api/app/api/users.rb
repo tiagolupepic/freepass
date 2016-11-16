@@ -6,7 +6,7 @@ class Users < Roda
     r.post do
       r.is do
         user = User.create(params)
-        response.status = 422 unless user.valid?
+        response.status = user.valid? ? 201 : 422
         user
       end
     end
