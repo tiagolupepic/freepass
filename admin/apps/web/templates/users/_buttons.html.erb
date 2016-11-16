@@ -1,0 +1,5 @@
+<%= link_to 'Editar', routes.edit_user_path(user.id), class: 'btn btn-sm btn-info' %>
+<a href="#" class='btn btn-sm btn-warning'>Inativar</a>
+<%= form_for :user, routes.user_path(user.id), class: 'form-buttons', method: :delete do
+    submit 'Excluir', class: 'btn btn-sm btn-danger'
+end %>

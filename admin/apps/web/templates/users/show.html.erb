@@ -1,0 +1,40 @@
+<div class='row'>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><%= user.full_name %></small></h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td class='right'>Nome Completo:</td>
+              <td><%= user.full_name %></td>
+            </tr>
+            <tr>
+              <td class='right'>CPF:</td>
+              <td><%= user.cpf %></td>
+            </tr>
+            <tr>
+              <td class='right'>E-Mail:</td>
+              <td><%= user.email %></td>
+            </tr>
+            <tr>
+              <td class='right'>Telefone</td>
+              <td><%= user.phone %></td>
+            </tr>
+            <tr>
+              <td class='right'>Endereço:</td>
+              <td><%= user.address %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <%= link_to 'Voltar', routes.users_path %>
+        <%= render partial: 'users/buttons' %>
+      </div>
+    </div>
+  </div>
+</div>
