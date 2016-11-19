@@ -14,6 +14,7 @@ AppEnv = ENV['RACK_ENV'] || 'development'
   'app/decorators/',
   'app/decorators/**/*',
   'app/delegators/',
+  'app/filters/',
   'app/api',
   'app'
 ].each do |path|
