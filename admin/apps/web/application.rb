@@ -331,6 +331,8 @@ module Web
         # See: http://hanamirb.org/guides/assets/overview
         digest  true
 
+        fingerprint true
+
         # Content Delivery Network (CDN)
         #
         # See: http://hanamirb.org/guides/assets/content-delivery-network
