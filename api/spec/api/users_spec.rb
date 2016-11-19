@@ -4,7 +4,7 @@ RSpec.describe Users do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }
-  let(:params) { { full_name: 'Freepass user', password: '123456', email: 'user@freepass', cpf: CPF.generate } }
+  let(:params) { { full_name: 'Freepass user', password: '123456', email: 'user@freepass', cpf: CPF.generate, admin: true } }
 
   describe 'GET /' do
     it 'should respond route' do
@@ -96,7 +96,7 @@ RSpec.describe Users do
     end
 
     context 'with errors' do
-      let(:params) { { full_name: nil } }
+      let(:params) { { full_name: "" } }
 
       it 'should return error' do
         put '/users/' + user.id, {}, request_headers

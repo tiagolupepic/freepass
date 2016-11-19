@@ -1,11 +1,12 @@
 class Users < Roda
   include RequestHelper
   include TokenAuthenticable
+  include FilterParams
 
   route do |r|
     r.post do
       r.is do
-        user = User.create(params)
+        user = User.create(user_params)
         response.status = user.valid? ? 201 : 422
         user
       end
@@ -19,7 +20,7 @@ class Users < Roda
       end
 
       r.put do
-        user.update_attributes(params)
+        user.update_attributes(user_params)
         response.status = 422 unless user.valid?
         user
       end
