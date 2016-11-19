@@ -9,4 +9,12 @@ RSpec.describe UserFilterParams do
     expect(subject.result[:full_name]).to eq 'freepass name'
     expect(subject.result[:admin]).to     be_nil
   end
+
+  context 'with nil params' do
+    let(:params) { { full_name: nil, phone: "", admin: true } }
+
+    it 'should remove nil and invalid' do
+      expect(subject.result.keys).to eq [:phone]
+    end
+  end
 end

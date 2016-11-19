@@ -6,7 +6,7 @@ class UserFilterParams
   end
 
   def result
-    valid_params.delete_if { |_, value| value.blank? }
+    valid_params.delete_if { |_, value| value.nil? }
   end
 
   private
