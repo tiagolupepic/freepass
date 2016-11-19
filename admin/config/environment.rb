@@ -3,6 +3,6 @@ require 'hanami/setup'
 require_relative '../lib/freepass'
 require_relative '../apps/web/application'
 
-Hanami::Container.configure do
+Hanami.configure do
   mount Web::Application, at: '/'
 end

@@ -1,1 +1,1 @@
-Dir["#{ __dir__ }/freepass/**/*.rb"].each { |file| require_relative file }
+Hanami::Utils.require!("#{__dir__}/freepass")
