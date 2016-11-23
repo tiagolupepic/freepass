@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:password).on(:create) }
 
   it { should have_many :cards }
+  it { should have_many :hours }
   it { should have_and_belong_to_many :periods }
   it { should have_and_belong_to_many :holidays }
 end
