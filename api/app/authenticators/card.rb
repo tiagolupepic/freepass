@@ -17,6 +17,11 @@ class CardAuthenticator
     card.present? and valid_period? and valid_hour? and valid_holiday?
   end
 
+  def object
+    return unless valid?
+    decorated_user
+  end
+
   private
 
   def valid_period?
@@ -65,6 +70,10 @@ class CardAuthenticator
 
   def user
     card.user
+  end
+
+  def decorated_user
+    UserDecorator.new(user)
   end
 
   def today

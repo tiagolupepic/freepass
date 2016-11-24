@@ -16,6 +16,12 @@ RSpec.describe CardAuthenticator do
       it 'should not be valid' do
         expect(subject).to_not be_valid
       end
+
+      describe '#object' do
+        it 'should return nil' do
+          expect(subject.object).to be_nil
+        end
+      end
     end
 
     context 'with valid card' do
@@ -171,6 +177,12 @@ RSpec.describe CardAuthenticator do
           it 'should be valid' do
             expect(subject).to be_valid
           end
+        end
+      end
+
+      describe '#object' do
+        it 'should return decorated user' do
+          expect(subject.object.class).to eq UserDecorator
         end
       end
     end
