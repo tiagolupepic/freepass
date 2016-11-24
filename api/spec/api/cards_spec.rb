@@ -94,21 +94,26 @@ RSpec.describe Cards do
   end
 
   describe 'POST /cards/auth' do
-    let(:params) { { number: '123456' } }
+    let(:params)  { { number: '123456' } }
+    let!(:card)   { create :card, number: params[:number], user: user }
+    let(:user)    { build :user }
 
     it 'should auth card' do
       post '/cards/auth', {}, request_headers
-      expect(response.status).to     eq 200
-      expect(json_response['success']).to be_truthy
+      expect(response.status).to           eq 200
+      expect(json_response['success']).to  be_truthy
+      expect(json_response['user']).to_not be_empty
     end
 
     context 'without number' do
+      let!(:card)  { create :card, number: 'other number', user: user }
       let(:params) { { number: nil } }
 
       it 'should auth card' do
         post '/cards/auth', {}, request_headers
-        expect(response.status).to     eq 403
+        expect(response.status).to          eq 403
         expect(json_response['success']).to be_falsey
+        expect(json_response['user']).to    be_nil
       end
     end
   end

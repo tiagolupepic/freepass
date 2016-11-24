@@ -5,8 +5,10 @@ class Cards < Roda
   route do |r|
     r.post do
       r.is 'auth' do
-        response.status = 403 if params[:number].blank?
-        { success: params[:number].present? }
+        auth = CardAuthenticator.new(params[:number])
+
+        response.status = 403 unless auth.valid?
+        { success: auth.valid?, user: auth.object }
       end
 
       r.is do
