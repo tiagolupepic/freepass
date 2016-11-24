@@ -7,7 +7,7 @@ class Users < Roda
     r.post do
       r.is do
         user = User.create(user_params)
-        response.status = user.valid? ? 201 : 422
+        response.status = user.persisted? ? 201 : 422
         user
       end
     end
