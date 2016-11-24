@@ -1,6 +1,5 @@
 class AdminAuthenticator
   # this check if exist password with user and his is admin
-
   attr_reader :password
 
   def initialize(password)
@@ -13,8 +12,8 @@ class AdminAuthenticator
   end
 
   def object
-    return unless password
-    user
+    return unless valid?
+    decorated_user
   end
 
   private
@@ -25,6 +24,10 @@ class AdminAuthenticator
 
   def user
     @user ||= User.find_by password: digest_password
+  end
+
+  def decorated_user
+    UserDecorator.new(user)
   end
 
   def digest_password

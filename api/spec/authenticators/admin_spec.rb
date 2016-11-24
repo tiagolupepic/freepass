@@ -27,7 +27,7 @@ RSpec.describe AdminAuthenticator do
 
       describe '#object' do
         it 'should receive object' do
-          expect(subject.object).to eq user
+          expect(subject.object.class).to eq UserDecorator
         end
       end
     end
