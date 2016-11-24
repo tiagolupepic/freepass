@@ -26,6 +26,7 @@ class HourDecorator < BaseDecorator
   private
 
   def days
+    return [] if model.days.nil?
     model.days.delete_if { |_,v| v == "false" }.keys
   end
 end

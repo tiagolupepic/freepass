@@ -18,7 +18,7 @@ RSpec.describe HourDecorator do
     end
 
     context 'with errors' do
-      let(:model) { build :hour, name: nil }
+      let(:model) { build :hour, name: nil, days: nil }
 
       it 'should parse errors' do
         expect(result[:errors]).to eq ({ name: [{ error: :blank}] })
