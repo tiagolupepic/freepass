@@ -1,4 +1,6 @@
-class UserDecorator
+require_relative 'base'
+
+class UserDecorator < BaseDecorator
   extend Forwardable
 
   def_delegators :@model, :id, :full_name, :phone, :address, :email, :cpf
@@ -20,12 +22,5 @@ class UserDecorator
       admin:     false,
       errors:    errors
     }
-  end
-
-  private
-
-  def errors
-    return if model.valid?
-    model.errors.details
   end
 end

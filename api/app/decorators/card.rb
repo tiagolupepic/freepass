@@ -1,4 +1,6 @@
-class CardDecorator
+require_relative 'base'
+
+class CardDecorator < BaseDecorator
   extend Forwardable
 
   def_delegators :@model, :id, :number, :user_id
@@ -16,6 +18,7 @@ class CardDecorator
       full_name: user.full_name,
       email:     user.email,
       user_id:   user_id,
+      errors:    errors
     }
   end
 
