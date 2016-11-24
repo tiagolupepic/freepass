@@ -5,8 +5,9 @@ class Admins < Roda
   route do |r|
     r.post do
       r.is 'auth' do
-        response.status = 403 if params[:password].blank?
-        { success: params[:password].present? }
+        auth = AdminAuthenticator.new(params[:password])
+        response.status = 403 unless auth.valid?
+        { success: auth.valid?, user: auth.object }
       end
     end
   end
