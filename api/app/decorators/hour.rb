@@ -1,4 +1,6 @@
-class HourDecorator
+require_relative 'base'
+
+class HourDecorator < BaseDecorator
   extend Forwardable
   include DecoratorHelper
 
@@ -16,7 +18,8 @@ class HourDecorator
       name:     name,
       start_at: format_time(start_at),
       end_at:   format_time(end_at),
-      days:     days
+      days:     days,
+      errors:   errors
     }
   end
 
