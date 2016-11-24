@@ -15,8 +15,8 @@ class CardDecorator < BaseDecorator
     {
       id:        id,
       number:    number,
-      full_name: user.full_name,
-      email:     user.email,
+      full_name: user.try(:full_name),
+      email:     user.try(:email),
       user_id:   user_id,
       errors:    errors
     }

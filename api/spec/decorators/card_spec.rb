@@ -16,6 +16,17 @@ RSpec.describe CardDecorator do
       expect(result[:email]).to     eq model.user.email
       expect(result[:user_id]).to   eq model.user_id
     end
+
+    context 'without user' do
+      let(:model) { build :card, user: nil }
+
+      it 'should parse json' do
+        expect(result[:id]).to        eq model.id
+        expect(result[:number]).to    eq model.number
+        expect(result[:full_name]).to be_nil
+        expect(result[:email]).to     be_nil
+      end
+    end
   end
 
   context 'with errors' do
