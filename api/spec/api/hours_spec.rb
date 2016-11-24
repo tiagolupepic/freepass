@@ -47,8 +47,27 @@ RSpec.describe Hours do
   describe 'POST create' do
     it 'should create hour' do
       post '/hours', {}, request_headers
-      expect(response.status).to eq 200
+      expect(response.status).to eq 201
       expect(Hour.count).to      eq 1
+    end
+
+    context 'with invalid params' do
+      let(:params) { { name: nil } }
+
+      it 'should return error' do
+        post '/hours', {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should not create hour' do
+        post '/hours', {}, request_headers
+        expect(Hour.count).to eq 0
+      end
+
+      it 'should return errors' do
+        post '/hours', {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 
@@ -74,6 +93,20 @@ RSpec.describe Hours do
     it 'should update hour attribute' do
       put '/hours/' + hour.id, {}, request_headers
       expect(hour.reload.name).to eq 'Name Changed'
+    end
+
+    context 'with errors' do
+      let(:params) { { name: "" } }
+
+      it 'should return error' do
+        put '/hours/' + hour.id, {}, request_headers
+        expect(response.status).to     eq 422
+      end
+
+      it 'should return error details' do
+        put '/hours/' + hour.id, {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 

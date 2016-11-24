@@ -5,7 +5,9 @@ class Hours < Roda
   route do |r|
     r.post do
       r.is do
-        errors_or_object Hour.create(params)
+        hour = Hour.create(params)
+        response.status = hour.persisted? ? 201 : 422
+        hour
       end
     end
 
@@ -17,7 +19,9 @@ class Hours < Roda
       end
 
       r.put do
-        hour.update_attributes(params) ? hour : halt_request(422, { error: hour.errors.full_messages })
+        hour.update_attributes(params)
+        response.status = 422 unless hour.valid?
+        hour
       end
 
       r.delete do
