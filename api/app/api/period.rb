@@ -5,23 +5,27 @@ class Periods < Roda
   route do |r|
     r.post do
       r.is do
-        errors_or_object Period.create(params)
+        period = Period.create(params)
+        response.status = period.persisted? ? 201 : 422
+        period
       end
     end
 
     r.is ":id" do |id|
-      hour = Period.find(id)
+      period = Period.find(id)
 
       r.get do
-        hour
+        period
       end
 
       r.put do
-        hour.update_attributes(params) ? hour : halt_request(422, { error: hour.errors.full_messages })
+        period.update_attributes(params)
+        response.status = 422 unless period.valid?
+        period
       end
 
       r.delete do
-        hour.destroy
+        period.destroy
       end
     end
 

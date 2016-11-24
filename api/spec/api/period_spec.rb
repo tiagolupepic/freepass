@@ -47,8 +47,27 @@ RSpec.describe Periods do
   describe 'POST create' do
     it 'should create period' do
       post '/periods', {}, request_headers
-      expect(response.status).to eq 200
-      expect(Period.count).to      eq 1
+      expect(response.status).to eq 201
+      expect(Period.count).to eq 1
+    end
+
+    context 'with invalid params' do
+      let(:params) { { name: nil } }
+
+      it 'should return error' do
+        post '/periods', {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should not create period' do
+        post '/periods', {}, request_headers
+        expect(Period.count).to eq 0
+      end
+
+      it 'should return errors' do
+        post '/periods', {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 
@@ -68,12 +87,26 @@ RSpec.describe Periods do
 
     it 'should not return error' do
       put '/periods/' + period.id, {}, request_headers
-      expect(response.status).to     eq 200
+      expect(response.status).to eq 200
     end
 
     it 'should update period attribute' do
       put '/periods/' + period.id, {}, request_headers
       expect(period.reload.name).to eq 'Name Changed'
+    end
+
+    context 'with errors' do
+      let(:params) { { name: "" } }
+
+      it 'should return error' do
+        put '/periods/' + period.id, {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should return error details' do
+        put '/periods/' + period.id, {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 
