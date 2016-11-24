@@ -47,8 +47,27 @@ RSpec.describe Holidays do
   describe 'POST create' do
     it 'should create holiday' do
       post '/holidays', {}, request_headers
-      expect(response.status).to eq 200
-      expect(Holiday.count).to      eq 1
+      expect(response.status).to eq 201
+      expect(Holiday.count).to   eq 1
+    end
+
+    context 'with invalid params' do
+      let(:params) { { name: 'Independency day' } }
+
+      it 'should return error' do
+        post '/holidays', {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should not create card' do
+        post '/holidays', {}, request_headers
+        expect(Holiday.count).to eq 0
+      end
+
+      it 'should return errors' do
+        post '/holidays', {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 
@@ -74,6 +93,20 @@ RSpec.describe Holidays do
     it 'should update holiday attribute' do
       put '/holidays/' + holiday.id, {}, request_headers
       expect(holiday.reload.name).to eq '4th July'
+    end
+
+    context 'with errors' do
+      let(:params) { { name: "" } }
+
+      it 'should return error' do
+        put '/holidays/' + holiday.id, {}, request_headers
+        expect(response.status).to     eq 422
+      end
+
+      it 'should return error details' do
+        put '/holidays/' + holiday.id, {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 

@@ -5,7 +5,9 @@ class Holidays < Roda
   route do |r|
     r.post do
       r.is do
-        errors_or_object Holiday.create(params)
+        holiday = Holiday.create(params)
+        response.status = holiday.persisted? ? 201 : 422
+        holiday
       end
     end
 
@@ -17,7 +19,9 @@ class Holidays < Roda
       end
 
       r.put do
-        holiday.update_attributes(params) ? holiday : halt_request(422, { error: holiday.errors.full_messages })
+        holiday.update_attributes(params)
+        response.status = 422 unless holiday.valid?
+        holiday
       end
 
       r.delete do
