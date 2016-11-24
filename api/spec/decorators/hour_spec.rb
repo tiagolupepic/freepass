@@ -14,7 +14,7 @@ RSpec.describe HourDecorator do
       expect(result[:name]).to     eq model.name
       expect(result[:start_at]).to eq model.start_at.strftime('%H:%M')
       expect(result[:end_at]).to   eq model.end_at.strftime('%H:%M')
-      expect(result[:days]).to     eq ['monday']
+      expect(result[:days]).to     eq []
     end
   end
 end
