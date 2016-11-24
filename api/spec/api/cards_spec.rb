@@ -48,8 +48,27 @@ RSpec.describe Cards do
   describe 'POST create' do
     it 'should create card' do
       post '/cards', {}, request_headers
-      expect(response.status).to eq 200
+      expect(response.status).to eq 201
       expect(Card.count).to      eq 1
+    end
+
+    context 'with invalid params' do
+      let(:params) { { number: nil } }
+
+      it 'should return error' do
+        post '/cards', {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should not create card' do
+        post '/cards', {}, request_headers
+        expect(Card.count).to eq 0
+      end
+
+      it 'should return errors' do
+        post '/cards', {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 
@@ -75,6 +94,20 @@ RSpec.describe Cards do
     it 'should update card attribute' do
       put '/cards/' + card.id, {}, request_headers
       expect(card.reload.number).to eq 'Another number'
+    end
+
+    context 'with errors' do
+      let(:params) { { number: "" } }
+
+      it 'should return error' do
+        put '/cards/' + card.id, {}, request_headers
+        expect(response.status).to eq 422
+      end
+
+      it 'should return error details' do
+        put '/cards/' + card.id, {}, request_headers
+        expect(json_response['errors']).to be_present
+      end
     end
   end
 

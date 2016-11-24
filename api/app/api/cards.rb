@@ -12,7 +12,9 @@ class Cards < Roda
       end
 
       r.is do
-        errors_or_object Card.create(params)
+        card = Card.create(params)
+        response.status = card.persisted? ? 201 : 422
+        card
       end
     end
 
@@ -24,7 +26,9 @@ class Cards < Roda
       end
 
       r.put do
-        card.update_attributes(params) ? card : halt_request(422, { error: card.errors.full_messages })
+        card.update_attributes(params)
+        response.status = 422 unless card.valid?
+        card
       end
 
       r.delete do
