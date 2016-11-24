@@ -68,6 +68,13 @@ GEM
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     slop (3.6.0)
+    state_machines (0.4.0)
+    state_machines-activemodel (0.4.0)
+      activemodel (>= 4.1, < 5.1)
+      state_machines (>= 0.4.0)
+    state_machines-activerecord (0.4.0)
+      activerecord (>= 4.1, < 5.1)
+      state_machines-activemodel (>= 0.3.0)
     thread_safe (0.3.5)
     timecop (0.8.1)
     tzinfo (1.2.2)
@@ -99,6 +106,7 @@ DEPENDENCIES
   roda (= 2.19)
   rspec
   shoulda-matchers
+  state_machines-activerecord (~> 0.4.0)
   timecop
   vcr
   webmock
