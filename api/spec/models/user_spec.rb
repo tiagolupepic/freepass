@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe User, type: :model do
   it { expect(described_class.ancestors).to include(Authenticable) }
+  it { expect(described_class.ancestors).to include(PgSearch) }
 
   it { should validate_presence_of(:full_name) }
   it { should validate_presence_of(:cpf) }
@@ -48,6 +49,12 @@ RSpec.describe User, type: :model do
       it 'should change state' do
         expect(user.deactivated?).to be_truthy
       end
+    end
+  end
+
+  describe '.search' do
+    it 'should have method' do
+      expect(User).to respond_to(:search)
     end
   end
 end
