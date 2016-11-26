@@ -1,6 +1,5 @@
-workers 2
-threads_count = 2
-threads threads_count, threads_count
+workers 4
+threads 1, 6
 
 preload_app!
 
