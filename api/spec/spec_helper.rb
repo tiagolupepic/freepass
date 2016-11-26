@@ -26,7 +26,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   def app
-    Api
+    FreePass
   end
 
   def response

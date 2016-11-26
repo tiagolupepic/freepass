@@ -1,4 +1,4 @@
-class Api < Roda
+class FreePass < Roda
   include RequestHelper
 
   use Rack::Cors do
@@ -17,27 +17,27 @@ class Api < Roda
     end
 
     r.on 'users' do
-      r.run Users
+      r.run Api::Users
     end
 
     r.on 'holidays' do
-      r.run Holidays
+      r.run Api::Holidays
     end
 
     r.on 'hours' do
-      r.run Hours
+      r.run Api::Hours
     end
 
     r.on 'cards' do
-      r.run Cards
+      r.run Api::Cards
     end
 
     r.on 'periods' do
-      r.run Periods
+      r.run Api::Periods
     end
 
     r.on 'admins' do
-      r.run Admins
+      r.run Api::Admins
     end
   end
 end

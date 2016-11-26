@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Periods do
+RSpec.describe Api::Periods do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }

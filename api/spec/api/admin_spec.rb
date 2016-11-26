@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Admins do
+RSpec.describe Api::Admins do
   let(:request_headers) { headers(token, params) }
   let(:token)  { nil }
   let(:params) { {} }

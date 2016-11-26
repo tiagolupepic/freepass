@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Users do
+RSpec.describe Api::Users do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }

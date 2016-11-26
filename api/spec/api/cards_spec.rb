@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Cards do
+RSpec.describe Api::Cards do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Hours do
+RSpec.describe Api::Hours do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }

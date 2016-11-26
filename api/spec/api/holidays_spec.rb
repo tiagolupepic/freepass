@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Holidays do
+RSpec.describe Api::Holidays do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }
