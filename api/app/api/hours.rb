@@ -32,6 +32,10 @@ module Api
       end
 
       r.get do
+        r.on :param => 'q' do
+          paginate Hour.search(params[:q]).paginate(page: params[:page])
+        end
+
         r.is do
           paginate Hour.paginate(page: params[:page])
         end
