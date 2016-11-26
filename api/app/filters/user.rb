@@ -18,8 +18,7 @@ class UserFilterParams
       address:   params[:address],
       email:     params[:email],
       password:  params[:password],
-      cpf:       params[:cpf],
-      role:      params[:role]
+      cpf:       params[:cpf]
     }
   end
 end
