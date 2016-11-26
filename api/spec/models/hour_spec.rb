@@ -16,4 +16,10 @@ RSpec.describe Hour, type: :model do
     it { should respond_to :friday }
     it { should respond_to :saturday }
   end
+
+  describe '.search' do
+    it 'should have method' do
+      expect(Hour).to respond_to(:search)
+    end
+  end
 end
