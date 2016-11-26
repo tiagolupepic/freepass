@@ -44,6 +44,47 @@ RSpec.describe Api::Periods do
     end
   end
 
+  describe 'GET /q?=name' do
+    it 'should respond route' do
+      get '/periods?q=name', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    context 'with periods' do
+      before do
+        create :period, name: 'name'
+        create :period, name: 'example'
+      end
+
+      it 'should respond all periods' do
+       get '/periods?q=name', {}, request_headers
+       expect(json_response.size).to eq 1
+      end
+
+      it 'should respond with paging headers' do
+        get '/periods?q=name', {}, request_headers
+
+        expect(response.headers['X-Total-Pages']).to eq '1'
+        expect(response.headers['X-Total-Count']).to eq '1'
+        expect(response.headers['X-Per-Page']).to    eq '5'
+      end
+
+      context 'paginate' do
+        let(:params) { { page: 2 } }
+
+        it 'should respond with status 200' do
+          get '/periods?q=name', {}, request_headers
+          expect(response.status).to eq 200
+        end
+
+        it 'should return empty periods' do
+          get '/periods?q=name', {}, request_headers
+          expect(json_response.size).to eq 0
+        end
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should create period' do
       post '/periods', {}, request_headers
