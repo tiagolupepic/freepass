@@ -2,6 +2,7 @@ class Holiday < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search,
                   :against => [:name],
+                  :ignoring => :accents,
                   :using => {
                     :tsearch => { prefix: true }
                   }

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search,
                   :against => [:full_name, :email],
+                  :ignoring => :accents,
                   :using => {
                     :tsearch => { prefix: true }
                   }
