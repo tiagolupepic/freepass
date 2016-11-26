@@ -3,6 +3,7 @@ module RequestHelper
     base.plugin :all_verbs
     base.plugin :indifferent_params
     base.plugin :json_parser
+    base.plugin :param_matchers
     base.plugin :json, classes: [Array, Hash, ActiveRecord::Base, ActiveRecord::Relation],
       include_request: true, serializer: proc { |object| DecoratorDelegator.new(object).run.to_json }
   end
