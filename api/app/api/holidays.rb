@@ -32,6 +32,10 @@ module Api
       end
 
       r.get do
+        r.on :param => 'q' do
+          paginate Holiday.search(params[:q]).paginate(page: params[:page])
+        end
+
         r.is do
           paginate Holiday.paginate(page: params[:page])
         end

@@ -44,6 +44,47 @@ RSpec.describe Api::Holidays do
     end
   end
 
+  describe 'GET /?q=' do
+    it 'should respond route' do
+      get '/holidays?q=user', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    context 'with cards' do
+      before do
+        create :holiday, name: 'Independency'
+        create :holiday, name: 'Another Day'
+      end
+
+      it 'should respond all cards' do
+       get '/holidays?q=Indep', {}, request_headers
+       expect(json_response.size).to eq 1
+      end
+
+      it 'should respond with paging headers' do
+        get '/holidays?q=Indep', {}, request_headers
+
+        expect(response.headers['X-Total-Pages']).to eq '1'
+        expect(response.headers['X-Total-Count']).to eq '1'
+        expect(response.headers['X-Per-Page']).to    eq '5'
+      end
+
+      context 'paginate' do
+        let(:params) { { page: 2 } }
+
+        it 'should respond with status 200' do
+          get '/holidays?q=Indep', {}, request_headers
+          expect(response.status).to eq 200
+        end
+
+        it 'should return empty cards' do
+          get '/holidays?q=Indep', {}, request_headers
+          expect(json_response.size).to eq 0
+        end
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should create holiday' do
       post '/holidays', {}, request_headers
