@@ -11,6 +11,7 @@ gem 'rack-cors', '0.4.0', :require => 'rack/cors'
 gem 'cpf_cnpj'
 gem 'state_machines-activerecord', '~> 0.4.0'
 gem 'pg_search'
+gem 'dotenv'
 
 group :development do
   gem 'rack-test'

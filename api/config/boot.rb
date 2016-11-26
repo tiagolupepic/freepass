@@ -1,9 +1,11 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'dotenv'
 
 Bundler.require
 
 AppEnv = ENV['RACK_ENV'] || 'development'
+Dotenv.load
 
 [
   'config/initializers',
