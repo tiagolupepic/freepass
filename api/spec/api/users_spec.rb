@@ -79,6 +79,14 @@ RSpec.describe Users do
       expect(response.status).to     eq 200
       expect(json_response["id"]).to eq user.id
     end
+
+    context 'when user doesnt exist' do
+      it 'should return error' do
+        get '/users/1234', {}, request_headers
+        expect(response.status).to     eq 404
+        expect(json_response["error"]).to eq 'User not found.'
+      end
+    end
   end
 
   describe 'PUT /:id' do

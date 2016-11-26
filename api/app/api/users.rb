@@ -13,7 +13,7 @@ class Users < Roda
     end
 
     r.is ":id" do |id|
-      user = User.find(id)
+      user = find_user(id)
 
       r.get do
         user
@@ -35,5 +35,11 @@ class Users < Roda
         paginate User.paginate(page: params[:page])
       end
     end
+  end
+
+  def find_user(id)
+    User.find(id)
+  rescue ActiveRecord::RecordNotFound
+    halt_request(404, { error: 'User not found.' })
   end
 end
