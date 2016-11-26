@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
   include Authenticable
   include PgSearch
-  pg_search_scope :search, :against => [:full_name, :email]
+  pg_search_scope :search,
+                  :against => [:full_name, :email],
+                  :using => {
+                    :tsearch => { prefix: true }
+                  }
 
   has_many :cards
   has_and_belongs_to_many :periods
