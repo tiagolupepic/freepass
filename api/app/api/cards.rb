@@ -20,7 +20,7 @@ class Cards < Roda
     end
 
     r.is ":id" do |id|
-      card = Card.find(id)
+      card = find_card(id)
 
       r.get do
         card
@@ -42,5 +42,11 @@ class Cards < Roda
         paginate Card.paginate(page: params[:page])
       end
     end
+  end
+
+  def find_card(id)
+    Card.find(id)
+  rescue ActiveRecord::RecordNotFound
+    halt_request(404, { error: 'Card not found.' })
   end
 end

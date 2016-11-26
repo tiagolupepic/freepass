@@ -80,6 +80,14 @@ RSpec.describe Cards do
       expect(response.status).to     eq 200
       expect(json_response["id"]).to eq card.id
     end
+
+    context 'when card doesnt exist' do
+      it 'should return card' do
+        get '/cards/1234', {}, request_headers
+        expect(response.status).to     eq 404
+        expect(json_response["error"]).to eq 'Card not found.'
+      end
+    end
   end
 
   describe 'PUT /:id' do
