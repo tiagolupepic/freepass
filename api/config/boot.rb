@@ -4,6 +4,7 @@ require 'bundler/setup'
 Bundler.require
 
 AppEnv = ENV['RACK_ENV'] || 'development'
+Dotenv.load
 
 [
   'config/initializers',
