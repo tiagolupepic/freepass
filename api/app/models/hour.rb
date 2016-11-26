@@ -1,7 +1,7 @@
 class Hour < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search,
-                  :against => [:full_name, :email],
+                  :against => [:name],
                   :using => {
                     :tsearch => { prefix: true }
                   }
