@@ -1,11 +1,12 @@
 class Holidays < Roda
   include RequestHelper
   include TokenAuthenticable
+  include FilterParams
 
   route do |r|
     r.post do
       r.is do
-        holiday = Holiday.create(params)
+        holiday = Holiday.create(holiday_params)
         response.status = holiday.persisted? ? 201 : 422
         holiday
       end
@@ -19,7 +20,7 @@ class Holidays < Roda
       end
 
       r.put do
-        holiday.update_attributes(params)
+        holiday.update_attributes(holiday_params)
         response.status = 422 unless holiday.valid?
         holiday
       end

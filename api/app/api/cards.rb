@@ -1,6 +1,7 @@
 class Cards < Roda
   include RequestHelper
   include TokenAuthenticable
+  include FilterParams
 
   route do |r|
     r.post do
@@ -12,7 +13,7 @@ class Cards < Roda
       end
 
       r.is do
-        card = Card.create(params)
+        card = Card.create(card_params)
         response.status = card.persisted? ? 201 : 422
         card
       end
@@ -26,7 +27,7 @@ class Cards < Roda
       end
 
       r.put do
-        card.update_attributes(params)
+        card.update_attributes(card_params)
         response.status = 422 unless card.valid?
         card
       end
