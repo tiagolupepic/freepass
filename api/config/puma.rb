@@ -6,7 +6,7 @@ preload_app!
 rackup      DefaultRackup
 environment ENV['RACK_ENV'] || 'development'
 
-bind "tcp://0.0.0.0:3000"
+bind "tcp://0.0.0.0:" + (ENV['PORT'] || ENV['HTTP_PORT'] || 9292)
 
 preload_app!
 
