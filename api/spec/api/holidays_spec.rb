@@ -79,6 +79,14 @@ RSpec.describe Holidays do
       expect(response.status).to     eq 200
       expect(json_response["id"]).to eq holiday.id
     end
+
+    context 'when holiday doesnt exist' do
+      it 'should return error' do
+        get '/holidays/1234', {}, request_headers
+        expect(response.status).to     eq 404
+        expect(json_response["error"]).to eq 'Holiday not found.'
+      end
+    end
   end
 
   describe 'PUT /:id' do

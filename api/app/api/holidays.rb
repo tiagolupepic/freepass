@@ -13,7 +13,7 @@ class Holidays < Roda
     end
 
     r.is ":id" do |id|
-      holiday = Holiday.find(id)
+      holiday = find_holiday(id)
 
       r.get do
         holiday
@@ -35,5 +35,11 @@ class Holidays < Roda
         paginate Holiday.paginate(page: params[:page])
       end
     end
+  end
+
+  def find_holiday(id)
+    Holiday.find(id)
+  rescue ActiveRecord::RecordNotFound
+    halt_request(404, { error: 'Holiday not found.' })
   end
 end
