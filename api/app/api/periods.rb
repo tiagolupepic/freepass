@@ -13,7 +13,7 @@ class Periods < Roda
     end
 
     r.is ":id" do |id|
-      period = Period.find(id)
+      period = find_period(id)
 
       r.get do
         period
@@ -35,5 +35,11 @@ class Periods < Roda
         paginate Period.paginate(page: params[:page])
       end
     end
+  end
+
+  def find_period(id)
+    Period.find(id)
+  rescue ActiveRecord::RecordNotFound
+    halt_request(404, { error: 'Period not found.' })
   end
 end
