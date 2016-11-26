@@ -13,7 +13,7 @@ class Hours < Roda
     end
 
     r.is ":id" do |id|
-      hour = Hour.find(id)
+      hour = find_hour(id)
 
       r.get do
         hour
@@ -35,5 +35,11 @@ class Hours < Roda
         paginate Hour.paginate(page: params[:page])
       end
     end
+  end
+
+  def find_hour(id)
+    Hour.find(id)
+  rescue ActiveRecord::RecordNotFound
+    halt_request(404, { error: 'Hour not found.' })
   end
 end

@@ -79,6 +79,14 @@ RSpec.describe Hours do
       expect(response.status).to     eq 200
       expect(json_response["id"]).to eq hour.id
     end
+
+    context 'when hour doesnt exist' do
+      it 'should return error' do
+        get '/hours/1234', {}, request_headers
+        expect(response.status).to     eq 404
+        expect(json_response["error"]).to eq 'Hour not found.'
+      end
+    end
   end
 
   describe 'PUT /:id' do
