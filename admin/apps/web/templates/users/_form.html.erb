@@ -51,6 +51,13 @@
       end
     end
 
+    div class: 'form-group' do
+      label :holidays, class: 'control-label col-md-3'
+      div class: 'col-md-6' do
+        select :holiday_ids, [], class: 'select2 form-control', 'data-url': '/holidays/search'
+      end
+    end
+
     div class: 'ln_solid' do
     end
 
