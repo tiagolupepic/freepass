@@ -11,3 +11,8 @@
  .form-buttons {
    display: inline!important;
  }
+
+ form.form-buttons:after {
+  display: inline!important;
+  content: none!important;
+}
