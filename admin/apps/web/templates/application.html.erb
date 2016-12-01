@@ -51,8 +51,8 @@
                   </li>
                   <li><a><i class="fa fa-clock-o"></i> Horários <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="hours/add.html">Adicionar</a></li>
-                      <li><a href="hours/index.html">Listar</a></li>
+                      <li><%= link_to 'Adicionar', routes.new_hour_path %></li>
+                      <li><%= link_to 'Listar', routes.hours_path %></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-calendar"></i> Periodos <span class="fa fa-chevron-down"></span></a>
