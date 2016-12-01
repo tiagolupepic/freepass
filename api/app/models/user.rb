@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   validates :full_name, :email, :cpf, presence: true
 
+  default_scope {  order(updated_at: :desc) }
+
   state_machine initial: :requested do
     event :activate do
       transition requested: :activated
