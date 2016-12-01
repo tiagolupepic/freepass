@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   state_machine initial: :requested do
     event :activate do
-      transition requested: :activated
+      transition [:requested, :deactivated] => :activated
     end
 
     event :deactivate do

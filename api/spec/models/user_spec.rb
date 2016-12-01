@@ -30,6 +30,17 @@ RSpec.describe User, type: :model do
         expect(user.activated?).to be_truthy
       end
 
+      context 'when user is deactivated' do
+        before do
+          user.deactivate!
+          user.activate!
+        end
+
+        it 'should activated' do
+          expect(user.activated?).to be_truthy
+        end
+      end
+
       describe '#deactivate' do
         before do
           user.deactivate!
