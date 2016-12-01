@@ -159,6 +159,36 @@ RSpec.describe Api::Users do
     end
   end
 
+  describe 'PUT /:id/deactivated' do
+    let(:user)   { create :user }
+    let(:params) { { } }
+
+    it 'should not return error' do
+      put '/users/' + user.id + '/deactivated', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    it 'should deactivated user' do
+      put '/users/' + user.id + '/deactivated', {}, request_headers
+      expect(user.reload).to be_deactivated
+    end
+  end
+
+  describe 'PUT /:id/activate' do
+    let(:user)   { create :user }
+    let(:params) { { } }
+
+    it 'should not return error' do
+      put '/users/' + user.id + '/activated', {}, request_headers
+      expect(response.status).to eq 200
+    end
+
+    it 'should activate user' do
+      put '/users/' + user.id + '/activated', {}, request_headers
+      expect(user.reload).to be_activated
+    end
+  end
+
   describe 'DELETE /:id' do
     let(:user)   { create :user }
     let(:params) { { full_name: 'Another name' } }

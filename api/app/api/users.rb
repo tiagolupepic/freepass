@@ -13,6 +13,18 @@ module Api
         end
       end
 
+      r.is ':id/activated' do |id|
+        user = find_user(id)
+        user.activate!
+        user
+      end
+
+      r.is ':id/deactivated' do |id|
+        user = find_user(id)
+        user.deactivate!
+        user
+      end
+
       r.is ":id" do |id|
         user = find_user(id)
 
