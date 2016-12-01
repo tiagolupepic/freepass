@@ -8,4 +8,13 @@ module DecoratorHelper
     return if d.blank?
     d.strftime('%d/%m/%Y')
   end
+
+  def state_name(state)
+    case state.to_s
+    when 'activated'
+      'Ativo'
+    else
+      'Inativo'
+    end
+  end
 end

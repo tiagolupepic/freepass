@@ -17,6 +17,7 @@ RSpec.describe UserDecorator do
       expect(result[:email]).to     eq model.email
       expect(result[:cpf]).to       eq model.cpf
       expect(result[:admin]).to     be_falsey
+      expect(result[:state]).to     eq 'Inativo'
       expect(result[:errors]).to    be_nil
     end
 
