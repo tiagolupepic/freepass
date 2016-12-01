@@ -10,15 +10,16 @@ RSpec.describe UserDecorator do
 
   describe '#as_json' do
     it 'should parse json' do
-      expect(result[:id]).to        eq model.id
-      expect(result[:full_name]).to eq model.full_name
-      expect(result[:phone]).to     eq model.phone
-      expect(result[:address]).to   eq model.address
-      expect(result[:email]).to     eq model.email
-      expect(result[:cpf]).to       eq model.cpf
-      expect(result[:admin]).to     be_falsey
-      expect(result[:state]).to     eq 'Inativo'
-      expect(result[:errors]).to    be_nil
+      expect(result[:id]).to         eq model.id
+      expect(result[:full_name]).to  eq model.full_name
+      expect(result[:phone]).to      eq model.phone
+      expect(result[:address]).to    eq model.address
+      expect(result[:email]).to      eq model.email
+      expect(result[:cpf]).to        eq model.cpf
+      expect(result[:admin]).to      be_falsey
+      expect(result[:state_name]).to eq 'Inativo'
+      expect(result[:state]).to      eq 'requested'
+      expect(result[:errors]).to     be_nil
     end
 
     context 'with errors' do
