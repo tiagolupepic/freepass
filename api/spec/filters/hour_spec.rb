@@ -17,4 +17,12 @@ RSpec.describe HourFilterParams do
       expect(subject.result.keys).to eq [:start_at]
     end
   end
+
+  context 'with days params' do
+    let(:params) { { days: ["monday", "sunday"] } }
+
+    it 'should parse' do
+      expect(subject.result[:days]).to eq ({ monday: true, sunday: true })
+    end
+  end
 end

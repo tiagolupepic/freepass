@@ -16,7 +16,12 @@ class HourFilterParams
       name:     params[:name],
       start_at: params[:start_at],
       end_at:   params[:end_at],
-      days:     params[:days]
+      days:     days
     }
+  end
+
+  def days
+    return if params[:days].blank?
+    Hash[params[:days].map { |d| [d.to_sym, true] }]
   end
 end
