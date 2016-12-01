@@ -1,0 +1,4 @@
+<%= link_to 'Editar', routes.edit_hour_path(hour.id), class: 'btn btn-sm btn-info' %>
+<%= form_for :hour, routes.hour_path(hour.id), class: 'form-buttons', method: :delete do
+    submit 'Excluir', class: 'btn btn-sm btn-danger'
+end %>
