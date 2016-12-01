@@ -16,3 +16,9 @@ resources :periods do
     get :search
   end
 end
+
+resources :holidays do
+  collection do
+    get :search
+  end
+end
