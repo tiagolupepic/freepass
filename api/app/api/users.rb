@@ -13,13 +13,13 @@ module Api
         end
       end
 
-      r.is ':id/activated' do |id|
+      r.put ':id/activated' do |id|
         user = find_user(id)
         user.activate!
         user
       end
 
-      r.is ':id/deactivated' do |id|
+      r.put ':id/deactivated' do |id|
         user = find_user(id)
         user.deactivate!
         user
@@ -55,7 +55,7 @@ module Api
     end
 
     def find_user(id)
-      User.find(id)
+      User.find(id.to_s.gsub('%2D', '-'))
     rescue ActiveRecord::RecordNotFound
       halt_request(404, { error: 'User not found.' })
     end
