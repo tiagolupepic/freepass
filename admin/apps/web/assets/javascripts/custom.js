@@ -304,4 +304,5 @@ $(function() {
       }
     });
   });
+  $('.format-hour').mask('99:99');
 });
