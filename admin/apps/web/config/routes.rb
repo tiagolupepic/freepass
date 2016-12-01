@@ -24,3 +24,4 @@ resources :holidays do
 end
 
 resources :hours
+resources :holidays
