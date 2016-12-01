@@ -22,3 +22,5 @@ resources :holidays do
     get :search
   end
 end
+
+resources :hours
