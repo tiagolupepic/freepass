@@ -44,7 +44,7 @@
                   <td class=" "><%= user.full_name %></td>
                   <td class=" "><%= user.email %></td>
                   <td class=" "><%= user.cpf %></td>
-                  <td class=" ">Ativo</td>
+                  <td class=" "><%= user.state_name %></td>
                   <td class=" "><%= user.admin ? 'Sim' : 'Não' %></td>
                   <td class=" last">
                     <%= link_to 'Visualizar', routes.user_path(user.id), class: 'btn btn-sm btn-default' %>

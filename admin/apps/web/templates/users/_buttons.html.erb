@@ -1,5 +1,13 @@
 <%= link_to 'Editar', routes.edit_user_path(user.id), class: 'btn btn-sm btn-info' %>
-<a href="#" class='btn btn-sm btn-warning'>Inativar</a>
+<% if user.state == "activated" %>
+  <%= form_for :user, routes.inactivated_user_path(user.id), class: 'form-buttons', method: :patch do
+      submit 'Inativar', class: 'btn btn-sm btn-warning'
+  end %>
+<% else %>
+  <%= form_for :user, routes.activated_user_path(user.id), class: 'form-buttons', method: :patch do
+      submit 'Ativar', class: 'btn btn-sm btn-success'
+  end %>
+<% end %>
 <%= form_for :user, routes.user_path(user.id), class: 'form-buttons', method: :delete do
     submit 'Excluir', class: 'btn btn-sm btn-danger'
 end %>

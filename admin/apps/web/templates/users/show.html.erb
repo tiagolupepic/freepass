@@ -29,6 +29,14 @@
               <td class='right'>Endereço:</td>
               <td><%= user.address %></td>
             </tr>
+            <tr>
+              <td class='right'>Admin:</td>
+              <td><%= user.admin ? 'Sim' : 'Não' %></td>
+            </tr>
+            <tr>
+              <td class='right'>Status:</td>
+              <td><%= user.state_name %></td>
+            </tr>
           </tbody>
         </table>
 

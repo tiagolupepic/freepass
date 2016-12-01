@@ -4,4 +4,9 @@
 # Example:
 get '/', to: 'home#index'
 
-resources :users
+resources :users do
+  member do
+    patch :activated
+    patch :inactivated
+  end
+end
