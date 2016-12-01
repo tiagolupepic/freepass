@@ -44,6 +44,12 @@
       end
     end
 
+    div class: 'form-group' do
+      label :periods, class: 'control-label col-md-3'
+      div class: 'col-md-6' do
+        select :period_ids, [], class: 'select2 form-control', 'data-url': '/periods/search'
+      end
+    end
 
     div class: 'ln_solid' do
     end
