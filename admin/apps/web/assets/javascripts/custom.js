@@ -277,3 +277,31 @@ if (typeof NProgress != 'undefined') {
         NProgress.done();
     });
 }
+
+// Select2
+//
+$(function() {
+  $('.select2').each(function(){
+    var url = $(this).attr('data-url');
+    $(this).select2({
+      ajax: {
+        url: url,
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function (data, params) {
+          params.page = params.page || 1;
+
+          return {
+            results: data
+          };
+        },
+        cache: false
+      }
+    });
+  });
+});
