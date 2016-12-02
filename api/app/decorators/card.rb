@@ -18,6 +18,7 @@ class CardDecorator < BaseDecorator
       full_name: user.try(:full_name),
       email:     user.try(:email),
       user_id:   user_id,
+      user:      user_option,
       errors:    errors
     }
   end
@@ -26,5 +27,10 @@ class CardDecorator < BaseDecorator
 
   def user
     model.user
+  end
+
+  def user_option
+    return {} unless user
+    [[user.full_name, user_id]]
   end
 end
