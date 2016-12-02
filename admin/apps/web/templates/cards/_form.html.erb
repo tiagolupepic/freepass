@@ -10,7 +10,7 @@
     div class: 'form-group' do
       label :user, class: 'control-label col-md-3'
       div class: 'col-md-6' do
-        select :user_id, {}, class: 'select2 form-control', 'data-url': '/users/search'
+        select :user_id, card.try(:user) || [], class: 'select2 form-control', 'data-url': '/users/search'
       end
     end
 
