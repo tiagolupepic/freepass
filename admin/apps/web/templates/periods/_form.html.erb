@@ -1,0 +1,41 @@
+<%=
+  form_for form, class: 'form-horizontal form-label-left' do
+    div class: 'form-group' do
+      label :name, class: 'control-label col-md-3'
+      div class: 'col-md-6' do
+        text_field :name, class: 'form-control'
+      end
+    end
+
+    div class: 'form-group' do
+      label :start_at, class: 'control-label col-md-3'
+      div class: 'col-md-3' do
+        text_field :start_at, class: 'form-control format-date'
+      end
+    end
+
+    div class: 'form-group' do
+      label :end_at, class: 'control-label col-md-3'
+      div class: 'col-md-3' do
+        text_field :end_at, class: 'form-control format-date'
+      end
+    end
+
+    div class: 'form-group' do
+      label :hours, class: 'control-label col-md-3'
+      div class: 'col-md-6' do
+        select :hour_ids, [], class: 'select2 form-control', 'data-url': '/hours/search'
+      end
+    end
+
+    div class: 'ln_solid' do
+    end
+
+    div class: 'form-group' do
+      div class: 'col-md-6 col-md-offset-3' do
+        submit submit_label, class: 'btn btn-success'
+        button 'Cancelar', class: 'btn btn-primary'
+      end
+    end
+  end
+%>

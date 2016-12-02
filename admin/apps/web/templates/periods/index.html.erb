@@ -1,0 +1,60 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Períodos</h3>
+  </div>
+
+  <div class="title_right">
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right top_search">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Filtrar por...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Buscar</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Listar</h2>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="x_content">
+      <% if periods.size > 0 %>
+        <div class="table-responsive">
+          <table class="table table-striped jambo_table bulk_action">
+            <thead>
+              <tr class="headings">
+                <th class="column-title" style="display: table-cell;">Nome </th>
+                <th class="column-title" style="display: table-cell;">Início </th>
+                <th class="column-title" style="display: table-cell;">Fim </th>
+                <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Ações</span></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% periods.each do |period| %>
+                <tr class="even pointer">
+                  <td class=" "><%= period.name %></td>
+                  <td class=" "><%= period.start_at %></td>
+                  <td class=" "><%= period.end_at %></td>
+                  <td class=" last">
+                    <%= link_to 'Visualizar', routes.period_path(period.id), class: 'btn btn-sm btn-default' %>
+                    <%= render partial: 'periods/buttons', locals: { period: period } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <p>Nenhum período cadastrado</p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
