@@ -14,5 +14,9 @@ module Web::Views::Cards
     def persisted?
       false
     end
+
+    def user
+      card.try(:user) || []
+    end
   end
 end
