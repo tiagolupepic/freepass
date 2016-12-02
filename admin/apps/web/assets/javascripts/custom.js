@@ -313,4 +313,5 @@ $(function() {
   });
   $('.format-hour').mask('99:99');
   $('.format-date').mask('99/99/9999');
+  $('.format-cpf').mask('999.999.999-99');
 });
