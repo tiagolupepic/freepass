@@ -14,5 +14,13 @@ module Web::Views::Users
     def persisted?
       false
     end
+
+    def periods
+      user.try(:periods) || []
+    end
+
+    def holidays
+      user.try(:holidays) || []
+    end
   end
 end

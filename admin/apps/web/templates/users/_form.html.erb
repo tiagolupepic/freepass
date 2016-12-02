@@ -3,7 +3,7 @@
     div class: 'form-group' do
       label :cpf, class: 'control-label col-md-3'
       div class: 'col-md-3' do
-        text_field :cpf, class: 'form-control'
+        text_field :cpf, class: 'form-control format-cpf'
       end
     end
 
@@ -47,14 +47,14 @@
     div class: 'form-group' do
       label :periods, class: 'control-label col-md-3'
       div class: 'col-md-6' do
-        select :period_ids, [], class: 'select2 form-control', 'data-url': '/periods/search'
+        select :period_ids, periods, class: 'select2 form-control', multiple: 'multiple', 'data-url': '/periods/search'
       end
     end
 
     div class: 'form-group' do
       label :holidays, class: 'control-label col-md-3'
       div class: 'col-md-6' do
-        select :holiday_ids, [], class: 'select2 form-control', 'data-url': '/holidays/search'
+        select :holiday_ids, holidays, class: 'select2 form-control', multiple: 'multiple', 'data-url': '/holidays/search'
       end
     end
 

@@ -10,9 +10,16 @@ module Web::Views::Users
       'Salvar'
     end
 
-
     def persisted?
       true
+    end
+
+    def periods
+      user.try(:periods) || []
+    end
+
+    def holidays
+      user.try(:holidays) || []
     end
   end
 end
