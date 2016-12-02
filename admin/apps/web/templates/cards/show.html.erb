@@ -1,0 +1,28 @@
+<div class='row'>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><%= card.number %></small></h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td class='right'>Número:</td>
+              <td><%= card.number %></td>
+            </tr>
+            <tr>
+              <td class='right'>Usuário:</td>
+              <td><%= card.full_name %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <%= link_to 'Voltar', routes.cards_path %>
+        <%= render partial: 'cards/buttons' %>
+      </div>
+    </div>
+  </div>
+</div>

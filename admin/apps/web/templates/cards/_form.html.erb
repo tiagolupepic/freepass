@@ -1,0 +1,27 @@
+<%=
+  form_for form, class: 'form-horizontal form-label-left' do
+    div class: 'form-group' do
+      label :number, class: 'control-label col-md-3'
+      div class: 'col-md-3' do
+        text_field :number, class: 'form-control'
+      end
+    end
+
+    div class: 'form-group' do
+      label :user, class: 'control-label col-md-3'
+      div class: 'col-md-6' do
+        select :user_id, {}, class: 'select2 form-control', 'data-url': '/users/search'
+      end
+    end
+
+    div class: 'ln_solid' do
+    end
+
+    div class: 'form-group' do
+      div class: 'col-md-6 col-md-offset-3' do
+        submit submit_label, class: 'btn btn-success'
+        button 'Cancelar', class: 'btn btn-primary'
+      end
+    end
+  end
+%>
