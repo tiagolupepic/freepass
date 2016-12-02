@@ -23,6 +23,11 @@ resources :holidays do
   end
 end
 
-resources :hours
+resources :hours do
+  collection do
+    get :search
+  end
+end
+
 resources :holidays
 resources :cards
