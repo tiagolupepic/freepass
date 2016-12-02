@@ -21,7 +21,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-id-card"></i> <span>Freepass</span></a>
+              <a href="/" class="site_title"><i class="fa fa-id-card"></i> <span>Freepass</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -57,8 +57,8 @@
                   </li>
                   <li><a><i class="fa fa-calendar"></i> Periodos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="periods/add.html">Adicionar</a></li>
-                      <li><a href="periods/index.html">Listar</a></li>
+                      <li><%= link_to 'Adicionar', routes.new_period_path %></li>
+                      <li><%= link_to 'Listar', routes.periods_path %></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-flag"></i> Feriados <span class="fa fa-chevron-down"></span></a>
