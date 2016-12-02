@@ -10,9 +10,12 @@ module Web::Views::Cards
       'Salvar'
     end
 
-
     def persisted?
       true
+    end
+
+    def user
+      card.try(:user) || []
     end
   end
 end
