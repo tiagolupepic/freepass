@@ -297,10 +297,16 @@ $(function() {
           params.page = params.page || 1;
 
           return {
-            results: data
+            results: $.map(data.items, function (item) {
+                return {
+                    text: item.name,
+                    slug: item.name,
+                    id: item.id
+                }
+            })
           };
         },
-        cache: false
+        cache: true
       }
     });
   });
