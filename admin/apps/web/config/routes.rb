@@ -9,6 +9,9 @@ resources :users do
     patch :activated
     patch :inactivated
   end
+  collection do
+    get :search
+  end
 end
 
 resources :periods do
