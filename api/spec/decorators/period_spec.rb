@@ -27,5 +27,15 @@ RSpec.describe PeriodDecorator do
         expect(result[:id]).to eq model.id
       end
     end
+
+    context 'with hours' do
+      let!(:hour) { create :hour, periods: [model] }
+
+      it 'should parse hour_ids' do
+        expect(result[:hour_ids]).to   eq [hour.id.to_s]
+        expect(result[:hour_names]).to eq 'Interval'
+        expect(result[:hours]).to      eq([['Interval', hour.id.to_s]])
+      end
+    end
   end
 end
