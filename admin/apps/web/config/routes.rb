@@ -25,3 +25,4 @@ end
 
 resources :hours
 resources :holidays
+resources :cards
