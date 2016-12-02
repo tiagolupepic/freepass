@@ -13,5 +13,9 @@ module Web::Views::Periods
     def persisted?
       false
     end
+
+    def hours
+      period.try(:hours) || []
+    end
   end
 end

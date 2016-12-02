@@ -10,9 +10,12 @@ module Web::Views::Periods
       'Salvar'
     end
 
-
     def persisted?
       true
+    end
+
+    def hours
+      period.try(:hours) || []
     end
   end
 end

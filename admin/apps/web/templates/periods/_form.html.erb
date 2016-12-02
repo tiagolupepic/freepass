@@ -24,7 +24,7 @@
     div class: 'form-group' do
       label :hours, class: 'control-label col-md-3'
       div class: 'col-md-6' do
-        select :hour_ids, period.try(:hours) || [], class: 'select2 form-control', multiple: 'multiple', 'data-url': '/hours/search'
+        select :hour_ids, hours, class: 'select2 form-control', multiple: 'multiple', 'data-url': '/hours/search'
       end
     end
 
