@@ -306,7 +306,8 @@ $(function() {
             })
           };
         },
-        cache: true
+        cache: true,
+        minimumInputLength: 1
       }
     });
   });
