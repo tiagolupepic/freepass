@@ -33,7 +33,7 @@ class PeriodDecorator < BaseDecorator
   end
 
   def hours
-    return {} if model.hours.empty?
+    return [] if model.hours.empty?
     model.hours.collect { |h| [h.name, h.id] }
   end
 end
