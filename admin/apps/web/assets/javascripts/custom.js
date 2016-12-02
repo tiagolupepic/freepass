@@ -299,8 +299,8 @@ $(function() {
           return {
             results: $.map(data.items, function (item) {
                 return {
-                    text: item.name,
-                    slug: item.name,
+                    text: item.name || item.full_name,
+                    slug: item.name || item.full_name,
                     id: item.id
                 }
             })
