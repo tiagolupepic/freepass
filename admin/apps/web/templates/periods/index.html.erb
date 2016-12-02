@@ -32,6 +32,7 @@
                 <th class="column-title" style="display: table-cell;">Nome </th>
                 <th class="column-title" style="display: table-cell;">Início </th>
                 <th class="column-title" style="display: table-cell;">Fim </th>
+                <th class="column-title" style="display: table-cell;">Horário(s) </th>
                 <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Ações</span></th>
               </tr>
             </thead>
@@ -42,6 +43,7 @@
                   <td class=" "><%= period.name %></td>
                   <td class=" "><%= period.start_at %></td>
                   <td class=" "><%= period.end_at %></td>
+                  <td class=" "><%= period.hour_names %></td>
                   <td class=" last">
                     <%= link_to 'Visualizar', routes.period_path(period.id), class: 'btn btn-sm btn-default' %>
                     <%= render partial: 'periods/buttons', locals: { period: period } %>
