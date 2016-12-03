@@ -314,4 +314,9 @@ $(function() {
   $('.format-hour').mask('99:99');
   $('.format-date').mask('99/99/9999');
   $('.format-cpf').mask('999.999.999-99');
+
+  $('[data-search-form]').on('click', 'button', function() {
+    var search = $('[data-search-form]').find('input[name=q]').val();
+    window.location.href = $(this).data('path') + '?q=' + search;
+  });
 });
