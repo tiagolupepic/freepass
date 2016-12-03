@@ -1,6 +1,8 @@
 module Web::Controllers::Holidays
   class Update
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :holiday
 
     def call(params)

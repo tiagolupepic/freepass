@@ -1,6 +1,8 @@
 module Web::Controllers::Holidays
   class Index
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :holidays
 
     def call(params)
