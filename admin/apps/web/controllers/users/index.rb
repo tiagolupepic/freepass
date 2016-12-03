@@ -4,7 +4,7 @@ module Web::Controllers::Users
     expose :users
 
     def call(params)
-      @users = User.all
+      @users = params[:q].present? ? User.where(q: params[:q]) : User.all
     end
   end
 end

@@ -4,7 +4,7 @@ module Web::Controllers::Cards
     expose :cards
 
     def call(params)
-      @cards = Card.all
+      @cards = params[:q].present? ? Card.where(q: params[:q]) : Card.all
     end
   end
 end

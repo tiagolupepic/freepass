@@ -4,7 +4,7 @@ module Web::Controllers::Holidays
     expose :holidays
 
     def call(params)
-      @holidays = Holiday.all
+      @holidays = params[:q].present? ? Holiday.where(q: params[:q]) : Holiday.all
     end
   end
 end

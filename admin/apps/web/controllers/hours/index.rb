@@ -4,7 +4,7 @@ module Web::Controllers::Hours
     expose :hours
 
     def call(params)
-      @hours = Hour.all
+      @hours = params[:q].present? ? Hour.where(q: params[:q]) : Hour.all
     end
   end
 end

@@ -4,7 +4,7 @@ module Web::Controllers::Periods
     expose :periods
 
     def call(params)
-      @periods = Period.all
+      @periods = params[:q].present? ? Period.where(q: params[:q]) : Period.all
     end
   end
 end
