@@ -17,7 +17,7 @@ class EventDecorator
       id:        id,
       name:      event_name,
       status:    event_status,
-      event_at:  format_datetime(created_at),
+      event_at:  format_datetime(created_at.in_time_zone('Brasilia')),
       user_name: user.full_name,
       context:   model.card_number
     }
