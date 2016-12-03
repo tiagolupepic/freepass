@@ -14,7 +14,7 @@ class CardAuthenticator
 
   def valid?
     return false unless number
-    card.present? and valid_period? and valid_hour? and valid_holiday?
+    card.present? and valid_user? and valid_period? and valid_hour? and valid_holiday?
   end
 
   def object
@@ -23,6 +23,10 @@ class CardAuthenticator
   end
 
   private
+
+  def valid_user?
+    user.activated?
+  end
 
   def valid_period?
     return true if user_periods.empty?

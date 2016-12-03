@@ -25,17 +25,26 @@ RSpec.describe CardAuthenticator do
     end
 
     context 'with valid card' do
-      let(:card)   { create :card }
+      let(:user)   { build :user, state: :activated }
+      let(:card)   { create :card, user: user }
       let(:number) { card.number }
 
       it 'should be valid' do
         expect(subject).to be_valid
       end
 
+      context 'when user is not activated' do
+        let(:user) { build :user, state: :requested }
+
+        it 'should not be valid' do
+          expect(subject).to_not be_valid
+        end
+      end
+
       context 'with one period' do
         let(:date)    { Time.parse('Nov, 3 2016 11:00:00') }
         let(:periods) { [build(:period, start_at: Time.parse('Nov, 2 2016'), end_at: Time.parse('Nov, 5 2016'), hours: hours)] }
-        let(:user)    { build :user, periods: periods }
+        let(:user)    { build :user, periods: periods, state: :activated }
         let(:card)    { create :card, user: user }
         let(:hours)   { [] }
         let(:days)    { {} }
@@ -161,7 +170,7 @@ RSpec.describe CardAuthenticator do
       context 'with holidays' do
         let(:date)     { Time.parse('Nov, 3 2016 11:00:00') }
         let!(:holiday) { create :holiday, happen_at: date }
-        let(:user)     { build :user }
+        let(:user)     { build :user, state: :activated }
         let(:card)     { create :card, user: user }
 
         before { Timecop.freeze date }
@@ -172,7 +181,7 @@ RSpec.describe CardAuthenticator do
         end
 
         context 'and user have holiday' do
-          let(:user) { build :user, holidays: [holiday] }
+          let(:user) { build :user, holidays: [holiday], state: :activated }
 
           it 'should be valid' do
             expect(subject).to be_valid
