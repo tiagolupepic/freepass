@@ -1,6 +1,8 @@
 module Web::Controllers::Hours
   class Create
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :hour
 
     def call(params)
