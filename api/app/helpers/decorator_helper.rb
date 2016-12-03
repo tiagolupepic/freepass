@@ -9,6 +9,11 @@ module DecoratorHelper
     d.strftime('%d/%m/%Y')
   end
 
+  def format_datetime(d)
+    return if d.blank?
+    d.strftime('%d/%m/%Y') + ' ' + format_time(d)
+  end
+
   def state_name(state)
     case state.to_s
     when 'activated'
