@@ -205,7 +205,7 @@ RSpec.describe Api::Users do
   end
 
   describe 'POST /users/auth' do
-    let!(:user)    { create :user, role: 'user', password: '123456' }
+    let!(:user)    { create :user, role: 'user', password: '123456', state: :activated }
     let(:password) { '123456' }
     let(:params) { { password: password } }
 

@@ -178,7 +178,7 @@ RSpec.describe Api::Cards do
   describe 'POST /cards/auth' do
     let(:params)  { { number: '123456' } }
     let!(:card)   { create :card, number: params[:number], user: user }
-    let(:user)    { build :user }
+    let(:user)    { build :user, state: :activated }
 
     it 'should auth card' do
       post '/cards/auth', {}, request_headers

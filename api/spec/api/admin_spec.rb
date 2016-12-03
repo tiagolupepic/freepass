@@ -4,7 +4,7 @@ RSpec.describe Api::Admins do
   let(:request_headers) { headers(token, params) }
   let(:token)  { nil }
   let(:params) { {} }
-  let!(:user)  { create :user, role: 'admin', password: '123456' }
+  let!(:user)  { create :user, role: 'admin', password: '123456', state: :activated }
 
   describe 'POST /admins/auth' do
     let(:password) { '123456' }
