@@ -39,5 +39,9 @@ class FreePass < Roda
     r.on 'admins' do
       r.run Api::Admins
     end
+
+    r.on 'events' do
+      r.run Api::Events
+    end
   end
 end
