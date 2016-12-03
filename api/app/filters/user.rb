@@ -21,7 +21,8 @@ class UserFilterParams
       cpf:         params[:cpf],
       period_ids:  params[:period_ids],
       holiday_ids: params[:holiday_ids],
-      role:        params[:role]
+      role:        params[:role],
+      state:       params[:state]
     }
   end
 end
