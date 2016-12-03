@@ -2,7 +2,7 @@
 # See: http://hanamirb.org/guides/routing/overview/
 #
 # Example:
-get '/',       to: 'home#index'
+root to: 'home#index'
 
 resources :users do
   member do
@@ -34,4 +34,5 @@ end
 
 resources :holidays
 resources :cards
-resources :auth, only: [:new, :create, :destroy]
+resources :auth, only: [:new, :create]
+resources :logout, only: [:create]
