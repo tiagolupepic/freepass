@@ -7,7 +7,7 @@ class BaseUserAuthenticator
 
   def valid?
     return false unless password
-    user.present? and user_role?
+    user.present? and valid_user? and user_role?
   end
 
   def object
@@ -19,6 +19,10 @@ class BaseUserAuthenticator
 
   def user_role?
     raise 'not implemented yet!'
+  end
+
+  def valid_user?
+    user.activated?
   end
 
   def user
