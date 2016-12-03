@@ -1,6 +1,8 @@
 module Web::Controllers::Users
   class Create
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :user
 
     def call(params)
