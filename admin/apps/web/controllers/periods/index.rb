@@ -1,6 +1,8 @@
 module Web::Controllers::Periods
   class Index
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :periods
 
     def call(params)

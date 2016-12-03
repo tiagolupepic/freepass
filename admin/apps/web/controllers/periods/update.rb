@@ -1,6 +1,8 @@
 module Web::Controllers::Periods
   class Update
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :period
 
     def call(params)

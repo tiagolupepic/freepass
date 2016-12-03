@@ -1,6 +1,8 @@
 module Web::Controllers::Periods
   class Search
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     accept :html, :json
     expose :periods
 
