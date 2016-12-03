@@ -18,6 +18,7 @@ describe EventDecorator do
         expect(result[:status]).to    eq 'Autorizado'
         expect(result[:event_at]).to  eq '02/12/2016 11:00'
         expect(result[:user_name]).to eq model.user.full_name
+        expect(result[:context]).to   eq '12345678'
       end
 
       context 'when success false' do

@@ -18,7 +18,8 @@ class EventDecorator
       name:      event_name,
       status:    event_status,
       event_at:  format_datetime(created_at),
-      user_name: user.full_name
+      user_name: user.full_name,
+      context:   model.card_number
     }
   end
 
