@@ -6,6 +6,12 @@ module Api
 
     route do |r|
       r.post do
+        r.on 'auth' do
+          auth = UserAuthenticator.new(params[:password])
+          response.status = 403 unless auth.valid?
+          { success: auth.valid?, user: auth.object }
+        end
+
         r.is do
           user = User.create(user_params)
           response.status = user.persisted? ? 201 : 422
@@ -23,9 +29,6 @@ module Api
         user = find_user(id)
         user.deactivate!
         user
-      end
-
-      r.post 'auth' do
       end
 
       r.is ":id" do |id|

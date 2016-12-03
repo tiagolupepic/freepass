@@ -203,4 +203,28 @@ RSpec.describe Api::Users do
       expect(User.count).to eq 0
     end
   end
+
+  describe 'POST /users/auth' do
+    let!(:user)    { create :user, role: 'user', password: '123456' }
+    let(:password) { '123456' }
+    let(:params) { { password: password } }
+
+    it 'should auth card' do
+      post '/users/auth', {}, request_headers
+      expect(response.status).to eq 200
+      expect(json_response['success']).to  be_truthy
+      expect(json_response['user']).to_not be_empty
+    end
+
+    context 'without password' do
+      let(:password) { nil }
+
+      it 'should not auth admin' do
+        post '/users/auth', {}, request_headers
+        expect(response.status).to eq 403
+        expect(json_response['success']).to be_falsey
+        expect(json_response['user']).to    be_nil
+      end
+    end
+  end
 end
