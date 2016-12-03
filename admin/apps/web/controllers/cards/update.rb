@@ -1,6 +1,8 @@
 module Web::Controllers::Cards
   class Update
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :card
 
     def call(params)

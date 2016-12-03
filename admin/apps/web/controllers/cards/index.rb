@@ -1,6 +1,8 @@
 module Web::Controllers::Cards
   class Index
     include Web::Action
+    include AdminAuthenticator
+    before :authenticate!
     expose :cards
 
     def call(params)
