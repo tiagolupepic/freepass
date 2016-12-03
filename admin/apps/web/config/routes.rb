@@ -36,3 +36,4 @@ resources :holidays
 resources :cards
 resources :auth, only: [:new, :create]
 resources :logout, only: [:create]
+resources :events, only: [:index]
