@@ -1,0 +1,18 @@
+<%=
+  form_for form, class: '' do
+    h1 do
+      text 'Admin :: Freepass'
+    end
+
+    div do
+      password_field :password, class: 'form-control', placeholder: 'Senha'
+    end
+
+    div do
+      submit 'Acessar'
+    end
+
+    div class: 'clearfix' do
+    end
+  end
+%>
