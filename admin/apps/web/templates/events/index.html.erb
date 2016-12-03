@@ -1,0 +1,48 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Eventos</h3>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Listar</h2>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="x_content">
+      <% if events.size > 0 %>
+        <div class="table-responsive">
+          <table class="table table-striped jambo_table bulk_action">
+            <thead>
+              <tr class="headings">
+                <th class="column-title" style="display: table-cell;">Nome </th>
+                <th class="column-title" style="display: table-cell;">Status </th>
+                <th class="column-title" style="display: table-cell;">Data/Hora </th>
+                <th class="column-title" style="display: table-cell;">Usuário</th>
+                <th class="column-title" style="display: table-cell;">Contexto</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% events.each do |event| %>
+                <tr class="even pointer">
+                  <td class=" "><%= event.name %></td>
+                  <td class=" "><%= event.status %></td>
+                  <td class=" "><%= event.event_at %></td>
+                  <td class=" "><%= event.user_name %></td>
+                  <td class=" "><%= event.context %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <p>Nenhum usuário cadastrado</p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
