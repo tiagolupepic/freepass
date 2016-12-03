@@ -6,9 +6,9 @@ module Api
     route do |r|
       r.post do
         r.is 'auth' do
-          auth = AdminAuthenticator.new(params[:password])
-          response.status = 403 unless auth.valid?
-          { success: auth.valid?, user: auth.object }
+          auth = AuthenticatorService.new('admin', params[:password]).run
+          response.status = 403 unless auth[:success]
+          auth
         end
       end
     end

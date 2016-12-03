@@ -7,9 +7,9 @@ module Api
     route do |r|
       r.post do
         r.on 'auth' do
-          auth = UserAuthenticator.new(params[:password])
-          response.status = 403 unless auth.valid?
-          { success: auth.valid?, user: auth.object }
+          auth = AuthenticatorService.new('user', params[:password]).run
+          response.status = 403 unless auth[:success]
+          auth
         end
 
         r.is do
