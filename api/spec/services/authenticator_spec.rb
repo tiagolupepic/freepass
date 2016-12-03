@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe AuthenticatorService do
-  subject { described_class.new(name, content) }
+  subject { described_class.new(name, params) }
 
   context 'User' do
-    let(:name)    { 'user' }
-    let(:content) { '123456' }
-    let(:user)    { create :user }
-    let(:auth)    { double valid?: true, object: user }
+    let(:name)   { 'user' }
+    let(:params) { { passowrd: '123456', cpf: '111.111.111-11' } }
+    let(:user)   { create :user }
+    let(:auth)   { double valid?: true, object: user }
 
     before do
-      allow(UserAuthenticator).to receive(:new).with(content).and_return auth
+      allow(UserAuthenticator).to receive(:new).with(params).and_return auth
     end
 
     it 'should return hash' do
@@ -25,13 +25,13 @@ describe AuthenticatorService do
   end
 
   context 'Admin' do
-    let(:name)    { 'admin' }
-    let(:content) { '123456' }
-    let(:user)    { create :user, role: 'admin' }
-    let(:auth)    { double valid?: true, object: user }
+    let(:name)   { 'admin' }
+    let(:params) { { password: '123456' } }
+    let(:user)   { create :user, role: 'admin' }
+    let(:auth)   { double valid?: true, object: user }
 
     before do
-      allow(AdminAuthenticator).to receive(:new).with(content).and_return auth
+      allow(AdminAuthenticator).to receive(:new).with(params).and_return auth
     end
 
     it 'should return hash' do
@@ -46,13 +46,13 @@ describe AuthenticatorService do
   end
 
   context 'Card' do
-    let(:name)    { 'card' }
-    let(:content) { '999' }
-    let(:user)    { create :user }
-    let(:auth)    { double valid?: true, object: user }
+    let(:name)   { 'card' }
+    let(:params) { { number: '999' } }
+    let(:user)   { create :user }
+    let(:auth)   { double valid?: true, object: user }
 
     before do
-      allow(CardAuthenticator).to receive(:new).with(content).and_return auth
+      allow(CardAuthenticator).to receive(:new).with(params).and_return auth
     end
 
     it 'should return hash' do

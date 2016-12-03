@@ -6,14 +6,14 @@ class CardAuthenticator
   # check if user is blocked
   WDAYS = { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 }
 
-  attr_accessor :number
+  attr_accessor :params
 
-  def initialize(number)
-    @number = number
+  def initialize(params)
+    @params = params
   end
 
   def valid?
-    return false unless number
+    return false unless params[:number]
     card.present? and valid_user? and valid_period? and valid_hour? and valid_holiday?
   end
 
@@ -69,7 +69,7 @@ class CardAuthenticator
   end
 
   def card
-    @card ||= Card.find_by number: number
+    @card ||= Card.find_by number: params[:number]
   end
 
   def user

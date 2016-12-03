@@ -3,8 +3,9 @@ require 'spec_helper'
 RSpec.describe AdminAuthenticator do
   let(:password) { nil }
   let(:role)     { :user }
+  let(:params)   { { password: password } }
 
-  subject { described_class.new(password) }
+  subject { described_class.new(params) }
 
   it 'should not be valid' do
     expect(subject).to_not be_valid

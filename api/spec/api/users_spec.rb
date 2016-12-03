@@ -207,7 +207,7 @@ RSpec.describe Api::Users do
   describe 'POST /users/auth' do
     let!(:user)    { create :user, role: 'user', password: '123456', state: :activated }
     let(:password) { '123456' }
-    let(:params) { { password: password } }
+    let(:params) { { password: password, cpf: user.cpf } }
 
     it 'should auth card' do
       post '/users/auth', {}, request_headers

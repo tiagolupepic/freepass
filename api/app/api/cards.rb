@@ -7,7 +7,7 @@ module Api
     route do |r|
       r.post do
         r.is 'auth' do
-          auth = AuthenticatorService.new('card', params[:number]).run
+          auth = AuthenticatorService.new('card', params).run
           response.status = 403 unless auth[:success]
           auth
         end

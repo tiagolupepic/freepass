@@ -2,17 +2,36 @@ require 'spec_helper'
 
 RSpec.describe UserAuthenticator do
   let(:password) { nil }
+  let(:cpf)      { nil }
+  let(:params)   { { password: password, cpf: cpf } }
   let(:role)     { :admin }
 
-  subject { described_class.new(password) }
+  subject { described_class.new(params) }
 
   it 'should not be valid' do
     expect(subject).to_not be_valid
   end
 
+  context 'with password' do
+    let(:password) { '123456' }
+
+    it 'should not be valid' do
+      expect(subject).to_not be_valid
+    end
+  end
+
+  context 'with cpf' do
+    let(:cpf) { '111.111.111-11' }
+
+    it 'should not be valid' do
+      expect(subject).to_not be_valid
+    end
+  end
+
   context 'with valid user' do
     let(:password) { '123456' }
-    let!(:user)    { create :user, password: password, role: role, state: :activated }
+    let(:cpf)      { '111.111.111-11' }
+    let!(:user)    { create :user, password: password, cpf: cpf, role: role, state: :activated }
 
     it 'should be invalid' do
       expect(subject).to_not be_valid

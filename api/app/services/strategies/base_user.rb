@@ -1,12 +1,12 @@
 class BaseUserAuthenticator
-  attr_reader :password
+  attr_reader :params
 
-  def initialize(password)
-    @password = password
+  def initialize(params)
+    @params = params
   end
 
   def valid?
-    return false unless password
+    return false unless attributes?
     user.present? and valid_user? and user_role?
   end
 
@@ -26,7 +26,7 @@ class BaseUserAuthenticator
   end
 
   def user
-    @user ||= User.find_by password: digest_password
+    raise 'not implemented yet!'
   end
 
   def decorated_user
@@ -34,6 +34,10 @@ class BaseUserAuthenticator
   end
 
   def digest_password
-    Digest::SHA1.hexdigest(password)
+    Digest::SHA1.hexdigest(params[:password])
+  end
+
+  def attributes?
+    params[:password].present?
   end
 end

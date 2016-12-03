@@ -1,8 +1,8 @@
 class AuthenticatorService
-  attr_reader :name, :content
+  attr_reader :name, :params
 
-  def initialize(name, content)
-    @name, @content = name, content
+  def initialize(name, params)
+    @name, @params = name, params
   end
 
   def run
@@ -13,12 +13,12 @@ class AuthenticatorService
   private
 
   def strategy
-    @strategy ||= "#{name}Authenticator".classify.constantize.new(content)
+    @strategy ||= "#{name}Authenticator".classify.constantize.new(params)
   end
 
   def create_event
     return unless strategy.object
-    Event.create name: event_name, user_id: strategy.object.id, card_number: content
+    Event.create name: event_name, user_id: strategy.object.id, card_number: params.inspect
   end
 
   def event_name
