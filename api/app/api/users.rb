@@ -25,6 +25,9 @@ module Api
         user
       end
 
+      r.post 'auth' do
+      end
+
       r.is ":id" do |id|
         user = find_user(id)
 
