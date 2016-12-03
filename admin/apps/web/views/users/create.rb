@@ -22,5 +22,9 @@ module Web::Views::Users
     def holidays
       user.try(:holidays) || []
     end
+
+    def roles
+      [['Administrador', 'admin'], ['Usuário', 'user']]
+    end
   end
 end
