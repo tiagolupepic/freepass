@@ -4,7 +4,7 @@ RSpec.describe Api::Hours do
   let(:request_headers) { headers(token, params) }
 
   let(:token)  { nil }
-  let(:params) { { name: 'Interval', start_at: Time.now.strftime('%H:%M:%S'), end_at: Time.now.strftime('%H:%M:%S'), days: { monday: true } } }
+  let(:params) { { name: 'Interval', start_at: Time.now.strftime('%H:%M:%S'), end_at: Time.now.strftime('%H:%M:%S'), days: ["monday"] } }
 
   describe 'GET /' do
     it 'should respond route' do
